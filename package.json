@@ -1,5 +1,5 @@
 {
-    "name": "wh-build",
+    "name": "webhandle-site-setup",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -22,7 +22,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-		"express": "^4.16.2"
+	"express": "^4.16.2"
     },
     "devDependencies": {
         "browserify": "^14.4.0",
