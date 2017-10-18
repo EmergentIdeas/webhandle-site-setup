@@ -1,0 +1,308 @@
+.container {
+	max-width: 100%;
+	margin: auto;
+	
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	.desktop({
+		width: @container-width;
+		padding-left: 0;
+		padding-right: 0;
+	});
+}
+
+.relative {
+	position: relative;
+}
+
+.bottom-right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.black-border {
+	border: solid 1px black;
+}
+
+.no-border {
+	border: none;
+}
+
+.make-me-a-table {
+    .table {
+        display: table;
+        width: 100%;
+        .row {
+            display: table-row;
+            & > * {
+                display: table-cell;
+                vertical-align: top;
+            }
+        }
+    }
+
+    .tablet-and-smaller ({
+        .table {
+            display: block;
+            .row {
+                display: block;
+                & > * {
+                    display: block;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+    });
+}
+
+
+.side-by-side {
+	clear: both;
+	
+	.left, .right {
+		width: 50%;
+		box-sizing: border-box;
+		position: relative;
+		display: inline-block;
+	}
+	
+	.right {
+		padding-left: 7px;
+	}
+	
+	.left {
+		padding-right: 7px;
+	}
+	
+	h2, h3 {
+		text-align: center;
+	}
+	
+	.third {
+		display: inline-block;
+		width: 33%;
+		box-sizing: border-box;
+		padding-left: 10px;
+		padding-right: 10px;
+		
+		img {
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+	
+	.two-third {
+		.third;
+		width: 66%;
+	}
+}
+
+.inline-children {
+	text-align: center;
+	font-size: 0;
+	& > * {
+		display: inline-block;
+		font-size: @base-font-size;
+	}
+}
+
+.top-up {
+	vertical-align: top;
+}
+
+.mid-align {
+	vertical-align: middle;
+}
+
+.center {
+	text-align: center;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.half-width {
+	width: 50%;
+}
+
+.clear {
+	clear: both;
+}
+
+.clear-inner {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.smaller {
+    font-size: 75%;
+}
+
+.bigger {
+    font-size: 125%;
+}
+
+.menu-link {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.link-inherit {
+	
+	a {
+		.menu-link;
+		font-size: inherit;
+		color: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		font-family: inherit;
+	}
+}
+
+.v-center {
+	position: absolute;
+	top: 50%;
+	.translateY(50%);
+}
+
+.v-h-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	.translate(-50%, -50%);
+}
+
+.background-color-fade(@color, @opamount) {
+    background-color: @color;
+    background-color: fade(@color, @opamount);
+}
+
+.horz-back-grad(@left, @right) {
+  background: -webkit-linear-gradient(left, @left , @right); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, @left , @right); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, @left , @right); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, @left , @right); /* Standard syntax */
+}
+
+.background-color-fade(@color, @opamount) {
+    background-color: @color;
+    background-color: fade(@color, @opamount);
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.fs(@font-size) {
+	font-size: @base-font-size * @font-size / 10;
+}
+
+@media (max-width: @container-width) {
+	.only-desktop {
+		display: none;
+	}
+}
+
+.desktop(@rules) {
+	.ie6, ie7, ie8, {
+		@rules();
+	}
+	
+	@media(min-width: @container-width) {
+		@rules();
+	}
+}
+
+.desktop-and-smaller(@rules) {
+    @media (max-width: @container-width) {
+        @rules();
+    }
+}
+
+.tablet(@rules) {
+	.ie6, ie7, ie8, {
+		@rules();
+	}
+	
+	@media(min-width: @tablet-width) {
+		@rules();
+	}
+}
+
+.tablet-and-smaller(@rules) {
+    @media (max-width: @tablet-width) {
+        @rules();
+    }
+}
+
+.big-phone-and-smaller(@rules) {
+    @media (max-width: @big-phone-width) {
+        @rules();
+    }
+}
+
+.big-phone(@rules) {
+	@media(min-width: @big-phone-width) {
+		@rules();
+	}
+}
+
+.phone-and-smaller(@rules) {
+    @media (max-width: @phone-width) {
+        @rules();
+    }
+}
+
+.phone(@rules) {
+	@media(min-width: @phone-width) {
+		@rules();
+	}
+}
+
+.iphone-landscape-and-smaller(@rules) {
+    @media (max-width: @iphone-4-landscape-width) {
+        @rules();
+    }
+}
+
+.iphone-landscape(@rules) {
+	@media(min-width: @iphone-4-landscape-width) {
+		@rules();
+	}
+}
+
+
+
+.big-phone-and-smaller({
+    .too-big-for-phone {
+        display: none;
+    }
+});
+
+.primative(@rules) {
+	.ie6, ie7, ie8, {
+		@rules();
+	}
+}
+
+

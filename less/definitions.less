@@ -1,0 +1,35 @@
+@container-width:			960px;
+@tablet-width: 				800px;
+@tablet-small-width:        716px;
+@big-phone-width:			650px;
+@phone-width:               550px;
+@iphone-4-landscape-width:	480px;
+@iphone-4-width: 			320px;
+
+
+/*
+ * The base font size which makes the chosen font match photoshop.
+ * For Open Sans this is 7.1pt, for Source Sans Pro this is 7.6pt 
+ */
+@base-font-size:			7.6pt;
+
+@grey-body-text:			#444444;
+
+
+.source-sans-pro {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+h1, h2, h3, h4, h5 {
+	.link-inherit;
+}
+
+body {
+	.source-sans-pro;
+    color: @grey-body-text;
+}

@@ -1,0 +1,15 @@
+__::start__
+<div class="container">
+	<div class="msg">
+		<h1>Site Name</h1>
+		<h2>Website Coming Soon</h2>
+		<p>
+			For inquiries, please email <a href="mailto:">info@domain.com</a>
+		</p>
+		
+		<footer>
+			&copy; 2017 
+		</footer>
+	</div>
+</div>
+__::end__
