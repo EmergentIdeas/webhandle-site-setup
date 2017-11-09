@@ -7,8 +7,8 @@ console.log('creating directories')
 mkdir.on('close', function(code) {
 	let packageDir = path.resolve(path.dirname(require.main.filename), '..')
 	let cwd = process.cwd()
-	console.log('package dir: ' + packageDir)
-	console.log('cwd: ' + cwd)
+	// console.log('package dir: ' + packageDir)
+	// console.log('cwd: ' + cwd)
 	spawn('cp', ['-rn', path.resolve(packageDir, 'client-js'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'server-js'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'less'), path.resolve(cwd)])
@@ -39,6 +39,7 @@ mkdir.on('close', function(code) {
 			destPackage.dependencies[key] = buildPackage.dependencies[key]
 		}
 	}
+	
 	for(let key in buildPackage.scripts) {
 		if(!destPackage.scripts[key]) {
 			destPackage.scripts[key] = buildPackage.scripts[key]
