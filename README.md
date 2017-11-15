@@ -7,7 +7,7 @@ npm install --save webhandle-site-setup
 ./node_modules/.bin/webhandle-site-setup
 
 ```
-Then change `dev.config.js` setting appName to the name of your app or site.
+Then change `dev.config.js` setting appName to the name of your package name.
 
 If you don't have PM2 installed, install like:
 ```
