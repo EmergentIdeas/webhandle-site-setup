@@ -1,7 +1,12 @@
 {
     "name": "webhandle-site-setup",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "setup the project as a webhandle project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmergentIdeas/webhandle-site-setup.git"
+  },
+
     "main": "index.js",
     "scripts": {
         "less-build": "lessc less/pages.less > public/css/pages.css | lessc less/editor.less > public/css/editor.css; lessc less/app.less > public/css/app.css",
@@ -21,6 +26,11 @@
     },
     "author": "",
     "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmergentIdeas/webhandle-site-setup/issues"
+  },
+  "homepage": "https://github.com/EmergentIdeas/webhandle-site-setup#readme",
+
     "dependencies": {
 		"express": "^4.16.2",
 		"webhandle": "^1.0.1"
