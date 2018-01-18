@@ -1,6 +1,6 @@
 {
     "name": "webhandle-site-setup",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -33,7 +33,13 @@
 
     "dependencies": {
 		"express": "^4.16.2",
-		"webhandle": "^1.0.1"
+		"webhandle": "^1.0.1",
+		"webhandle-menus-1": "^1.0.3",
+		"file-sink": "^1.0.0",
+		"filter-log": "0.0.4",
+		"jquery": "^1.12.4",
+		"moment": "^2.20.1"
+
     },
     "devDependencies": {
         "browserify": "^14.4.0",
