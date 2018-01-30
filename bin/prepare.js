@@ -16,6 +16,8 @@ mkdir.on('close', function(code) {
 	spawn('cp', ['-rn', path.resolve(packageDir, 'menus'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'pages'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])
+	spawn('cp', ['-rn', path.resolve(packageDir, 'debug.config.js'), path.resolve(cwd)])
+	spawn('cp', ['-rn', path.resolve(packageDir, 'server.config.js'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'web-server.js'), path.resolve(cwd)])
 	
 	let buildPackage = JSON.parse(fs.readFileSync(path.resolve(packageDir, 'package.json')).toString())
