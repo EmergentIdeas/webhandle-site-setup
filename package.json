@@ -39,7 +39,7 @@
 		"filter-log": "0.0.4",
 		"jquery": "^1.12.4",
 		"moment": "^2.20.1",
-		"webhandle-redirector": "^1.0.0",
+		"webhandle-redirector": "^1.0.0"
 
     },
     "devDependencies": {
