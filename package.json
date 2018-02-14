@@ -1,6 +1,6 @@
 {
     "name": "webhandle-site-setup",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -38,7 +38,8 @@
 		"file-sink": "^1.0.0",
 		"filter-log": "0.0.4",
 		"jquery": "^1.12.4",
-		"moment": "^2.20.1"
+		"moment": "^2.20.1",
+		"webhandle-redirector": "^1.0.0",
 
     },
     "devDependencies": {
