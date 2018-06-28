@@ -1,52 +1,51 @@
 {
-    "name": "webhandle-site-setup",
-    "version": "1.0.5",
-    "description": "setup the project as a webhandle project",
+  "name": "webhandle-site-setup",
+  "version": "1.0.5",
+  "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EmergentIdeas/webhandle-site-setup.git"
   },
-
-    "main": "index.js",
-    "scripts": {
-        "less-build": "lessc less/pages.less > public/css/pages.css | lessc less/editor.less > public/css/editor.css; lessc less/app.less > public/css/app.css",
-        "less-compress": "uglifycss public/css/pages.css > public/css/pages.min.css; uglifycss public/css/editor.css > public/css/editor.min.css; uglifycss public/css/app.css > public/css/app.min.css",
-        "client-js-compress": "uglifyjs public/js/pages.js -o public/js/pages.min.js -c --source-map url=public/js/pages.min.js.map; uglifyjs public/js/editor.js -o public/js/editor.min.js -c --source-map url=public/js/editor.min.js.map; uglifyjs public/js/app.js -o public/js/app.min.js -c --source-map url=public/js/app.min.js.map",
-        "client-js-build": "browserify client-js/pages.js > public/js/pages.js; browserify client-js/editor.js > public/js/editor.js; browserify client-js/app.js > public/js/app.js",
-		"dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
-		"dev-client-js-watch": "onchange 'client-js/**/*.js' -- npm run client-js-build",
-		"dev-server-js-watch": "onchange 'server-js/**/*.js' -- pm2 restart $npm_package_name-web",
-        "bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch'",
-        "pm2-bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch' 'npm run dev-server-js-watch'",
-        "start": "node ./web-server.js",
-        "debug": "node --inspect --inspect-brk ./web-server.js"
-    },
-    "bin": {
-        "webhandle-site-setup": "./bin/prepare.js"
-    },
-    "author": "",
-    "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "less-build": "lessc less/pages.less > public/css/pages.css | lessc less/editor.less > public/css/editor.css; lessc less/app.less > public/css/app.css",
+    "less-compress": "uglifycss public/css/pages.css > public/css/pages.min.css; uglifycss public/css/editor.css > public/css/editor.min.css; uglifycss public/css/app.css > public/css/app.min.css",
+    "client-js-compress": "uglifyjs public/js/pages.js -o public/js/pages.min.js -c --source-map url=public/js/pages.min.js.map; uglifyjs public/js/editor.js -o public/js/editor.min.js -c --source-map url=public/js/editor.min.js.map; uglifyjs public/js/app.js -o public/js/app.min.js -c --source-map url=public/js/app.min.js.map",
+    "client-js-build": "browserify client-js/pages.js > public/js/pages.js; browserify client-js/editor.js > public/js/editor.js; browserify client-js/app.js > public/js/app.js",
+    "dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
+    "dev-client-js-watch": "onchange 'client-js/**/*.js' -- npm run client-js-build",
+    "dev-server-js-watch": "onchange 'server-js/**/*.js' -- pm2 restart $npm_package_name-web",
+    "bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch'",
+    "pm2-bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch' 'npm run dev-server-js-watch'",
+    "start": "node ./web-server.js",
+    "debug": "node --inspect --inspect-brk ./web-server.js"
+  },
+  "bin": {
+    "webhandle-site-setup": "./bin/prepare.js"
+  },
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/EmergentIdeas/webhandle-site-setup/issues"
   },
   "homepage": "https://github.com/EmergentIdeas/webhandle-site-setup#readme",
-
-    "dependencies": {
-		"express": "^4.16.2",
-		"webhandle": "^1.0.10",
-		"webhandle-menus-1": "^1.0.3",
-		"file-sink": "^1.0.0",
-		"filter-log": "0.0.4",
-		"jquery": "^1.12.4",
-		"moment": "^2.20.1",
-		"webhandle-redirector": "^1.0.0"
-
-    },
-    "devDependencies": {
-        "browserify": "^14.4.0",
-        "less": "^2.7.2",
-        "onchange": "^3.2.1",
-        "parallelshell": "^3.0.1",
-        "uglify-js": "^3.0.24"
-    }
+  "dependencies": {
+    "express": "^4.16.3",
+    "file-sink": "^1.0.4",
+    "filter-log": "0.0.4",
+    "jquery": "^1.12.4",
+    "moment": "^2.20.1",
+    "webhandle": "^1.0.10",
+    "webhandle-menus-1": "^1.0.3",
+    "webhandle-page-editor": "^1.0.1",
+    "webhandle-redirector": "^1.0.0",
+    "webhandle-users": "^1.0.2"
+  },
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "less": "^2.7.2",
+    "onchange": "^3.2.1",
+    "parallelshell": "^3.0.1",
+    "uglify-js": "^3.4.2"
+  }
 }

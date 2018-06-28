@@ -1,6 +1,5 @@
-window.require = require
-window.jQuery = window.$ = require('jquery')
+var $ = require('jquery')
+var tri = require('tripartite')
 
-var tri = window.Tripartite = require('tripartite')
-
+require('./pages')
 
