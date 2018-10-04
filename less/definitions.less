@@ -1,11 +1,15 @@
-@container-width:			960px;
-@tablet-width: 				800px;
-@tablet-small-width:        716px;
-@big-phone-width:			650px;
-@phone-width:               550px;
-@iphone-4-landscape-width:	480px;
-@iphone-4-width: 			320px;
 
+.setup-width-definitions() {
+	@container-width:			1100px;
+	@tablet-width: 				900px;
+	@tablet-small-width:        716px;
+	@big-phone-width:			650px;
+	@phone-width:               550px;
+	@iphone-4-landscape-width:	480px;
+	@iphone-4-width: 			320px;
+}
+
+.setup-width-definitions();
 
 /*
  * The base font size which makes the chosen font match photoshop.
@@ -16,11 +20,11 @@
 @grey-body-text:			#444444;
 
 
-.source-sans-pro {
+.source-sans-pro() {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-.open-sans {
+.open-sans() {
     font-family: 'Open Sans', sans-serif;
 }
 

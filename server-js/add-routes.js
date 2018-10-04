@@ -47,6 +47,6 @@ module.exports = function(app) {
 	// )
 	// webhandle.routers.primary.use('/webhandle-page-editor', securedRouter)
 
-	
+	require('./add-templates.js')
 }
 

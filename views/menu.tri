@@ -1,0 +1,10 @@
+__::app_pre__
+	<section class="">
+		<h1>Menu</h1>
+		<ul class="main-menu">
+			<li><a href="/user">Users</a></li>
+			<li><a href="/">Site</a></li>
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	</section>
+__::app_post__

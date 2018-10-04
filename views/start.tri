@@ -25,7 +25,7 @@
 <meta name="viewport" content="width=device-width" />
 <meta name="built-by" content="Dan Kolz of Emergent Ideas" />
 
-<link href="/css/pages.css" rel="stylesheet">
+<link href="__vrsc__/css/pages.css" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Open+Sans:100,300,400,700" rel="stylesheet">
 
 
