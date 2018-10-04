@@ -1,7 +1,7 @@
 __::start__
 <header>
 	<div class="container">
-		<img class="logo" src="__vrsc__/img/logo-top.png" />
+		
 		<ul class="menu">
 			__menu.children::webhandle-menus-1/menu-item-li__
 		</ul>
@@ -13,8 +13,7 @@ __::start__
 
 <footer>
 	<div class="container">
-		<div class="logo-side">
-			<img src="__vrsc__/img/logo-footer.png" />
+		<div class="">
 			<div class="copyright">
 				© Copyright 2018.  All rights reserved.
 			</div>

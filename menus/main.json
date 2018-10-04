@@ -9,13 +9,6 @@
     "customClasses": "current",
     "image": ""
 }, {
-    "id": 1,
-    "parentId": 0,
-    "label": "Meet Our Staff",
-    "url": "/staff",
-    "image": "",
-    "customClasses": ""
-}, {
     "id": 3,
     "parentId": 0,
     "label": "Contact Us",

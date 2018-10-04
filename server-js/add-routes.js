@@ -10,43 +10,16 @@ module.exports = function(app) {
 
 
 	// Add the user auth
+	// require('./enable-users')(dbName, defaultAdminPassword)
 	
-	// let auth = usersSetup({
-	// 	app: webhandle, 
-	// 	// set this db up in the env file
-	// 	mongoDb: webhandle.dbs.dbName.db, 
-	// 	pretemplate: 'app_pre', 
-	// 	posttemplate: 'app_post',
-	// 	onLogin: (req, res, next) => {
-	// 		// This is a handle that gets run when a user successully logs in
-	// 		res.redirect('/menu')
-	// 	}
-	// })	
-	// auth.createUserIfNoneExists('administrator', 'change_this_password', ['administrators'])
-
 	// Custom menu
-	
-	// let adminRouter = express.Router()
-	// adminRouter.get('/menu', (req, res, next) => {
-	// 	res.render('menu')
-	// })
-	// let securedAdminRouter = require('webhandle-users/utils/allow-group')(
-	// 	['administrators', 'page-editors'],
-	// 	adminRouter
-	// )
-	// webhandle.routers.primary.use(securedAdminRouter)
-
+	// require('./enable-menu')()
 
 	// Add the page editor
-	
-	// let pageEditingRouter = express.Router()
-	// require('webhandle-page-editor/webhandle-integrator')(webhandle, path.join(webhandle.projectRoot, 'pages'), pageEditingRouter)
-	// let securedRouter = require('webhandle-users/utils/allow-group')(
-	// 	['administrators', 'page-editors'],
-	// 	pageEditingRouter
-	// )
-	// webhandle.routers.primary.use('/webhandle-page-editor', securedRouter)
+	// require('./enable-page-editor')()
 
+	// add a couple javascript based tripartite templates. More a placeholder
+	// for project specific templates than it is a useful library.
 	require('./add-templates.js')
 }
 
