@@ -37,7 +37,7 @@
     "filter-log": "0.0.4",
     "jquery": "^1.12.4",
     "moment": "^2.22.2",
-    "webhandle": "^1.0.10",
+    "webhandle": "^1.0.21",
     "webhandle-menus-1": "^1.0.3",
     "webhandle-page-editor": "^1.0.1",
     "webhandle-redirector": "^1.0.0",
@@ -47,7 +47,7 @@
     "browserify": "^14.4.0",
     "less": "^3.5.2",
     "onchange": "^3.2.1",
-    "parallelshell": "^3.0.1",
+    "parallelshell": "3.0.1",
     "uglify-js": "^3.4.2"
   }
 }
