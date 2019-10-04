@@ -1,0 +1,21 @@
+__::start__
+<div class="page page-inner">
+	<section class="content clipper tight-top">
+		<div class="container">
+			<h1>Login</h1>
+			<form method="post" action="/login">
+				<label>Username
+					<input type="text" name="name" required="required">
+				</label>
+				<br/>
+				<label>Password
+					<input type="password" name="password" required="required">
+				</label>
+				<br />
+				<button type="submit">Log In</button>
+			</form>
+		</div>
+	</section>
+</div>
+<script type="text/javascript" src="/js/app.js" async="async"></script>
+</body></html>

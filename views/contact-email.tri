@@ -1,0 +1,20 @@
+<p>
+	Name:<br/>
+	__name__
+</p>
+
+<p>
+	Email:<br/>
+	__email__
+</p>
+
+<p>
+	Phone:<br/>
+	__phone__
+</p>
+
+<p>
+	Message:<br/>
+	__message__
+</p>
+

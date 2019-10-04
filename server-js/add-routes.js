@@ -20,6 +20,8 @@ module.exports = function(app) {
 
 	// add a couple javascript based tripartite templates. More a placeholder
 	// for project specific templates than it is a useful library.
-	require('./add-templates.js')
+	require('./add-templates.js')()
+
+	// app.use(require('./routes/contact-forms'))
 }
 
