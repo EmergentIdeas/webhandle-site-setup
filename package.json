@@ -31,24 +31,24 @@
   "homepage": "https://github.com/EmergentIdeas/webhandle-site-setup#readme",
   "dependencies": {
     "ei-form-styles-1": "^1.0.0",
-    "ei-grid-1": "^1.0.2",
-    "express": "^4.16.3",
+    "ei-grid-1": "^1.0.4",
+    "express": "^4.17.1",
     "file-sink": "^1.0.4",
     "filter-log": "0.0.4",
     "jquery": "^1.12.4",
-    "moment": "^2.22.2",
+    "moment": "^2.24.0",
     "webhandle": "^1.0.21",
     "webhandle-emailer": "^1.0.6",
-    "webhandle-menus-1": "^1.0.3",
-    "webhandle-page-editor": "^1.0.1",
+    "webhandle-menus-1": "^1.0.4",
+    "webhandle-page-editor": "^1.0.5",
     "webhandle-redirector": "^1.0.0",
-    "webhandle-users": "^1.0.2"
+    "webhandle-users": "^1.0.5"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
-    "less": "^3.5.2",
+    "less": "^3.10.3",
     "onchange": "^3.2.1",
     "parallelshell": "3.0.1",
-    "uglify-js": "^3.4.2"
+    "uglify-js": "^3.6.0"
   }
 }
