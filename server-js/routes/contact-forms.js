@@ -81,25 +81,27 @@ const spamcheck = (req, res, callback) => {
 	log.error('spamcheck run')
 	let txt = JSON.stringify(req.body).toLowerCase()
 	
-	if(req.body.email.toLowerCase().endsWith('.ru')) {
-		log.error('spam blocked')
-		return callback(new Error('email address ends with ru'))
-	}
-	if(req.body.email.toLowerCase().indexOf('.site') > -1) {
-		log.error('spam blocked')
-		return callback(new Error('email address ends with site'))
-	}
-	if(req.body.email.toLowerCase().indexOf('mail.ru') > -1) {
-		log.error('spam blocked')
-		return callback(new Error('email address ends with site'))
-	}
-	if(req.body.email.toLowerCase().indexOf('href') > -1) {
-		log.error('spam blocked')
-		return callback(new Error('email address has href'))
-	}
-	if(req.body.email.toLowerCase().indexOf('<') > -1) {
-		log.error('spam blocked')
-		return callback(new Error('email address has gt'))
+	if(req.body.email) {
+		if(req.body.email.toLowerCase().endsWith('.ru')) {
+			log.error('spam blocked')
+			return callback(new Error('email address ends with ru'))
+		}
+		if(req.body.email.toLowerCase().indexOf('.site') > -1) {
+			log.error('spam blocked')
+			return callback(new Error('email address ends with site'))
+		}
+		if(req.body.email.toLowerCase().indexOf('mail.ru') > -1) {
+			log.error('spam blocked')
+			return callback(new Error('email address ends with site'))
+		}
+		if(req.body.email.toLowerCase().indexOf('href') > -1) {
+			log.error('spam blocked')
+			return callback(new Error('email address has href'))
+		}
+		if(req.body.email.toLowerCase().indexOf('<') > -1) {
+			log.error('spam blocked')
+			return callback(new Error('email address has gt'))
+		}
 	}
 	for(let phrase of blacklisted) {
 		if(txt.indexOf(phrase.toLowerCase()) > -1) {

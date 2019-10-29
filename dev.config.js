@@ -34,6 +34,14 @@ module.exports = {
                 //     },
                 //     destDefault: "dan@example.com"
                 // }
+				// , dbs: [
+                //    {
+                //        "type": "mongodb",
+                //        "dbName": "dbname",
+                //        "url": "mongodb://localhost:27017/",
+                //        "collectionNames": [ "webhandleusers_users" ]
+                //    }
+                // ]
 
 
             }
