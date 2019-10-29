@@ -35,7 +35,7 @@
     "express": "^4.17.1",
     "file-sink": "^1.0.4",
     "filter-log": "0.0.4",
-    "jquery": "^1.12.4",
+    "jquery": "^3.4.0",
     "moment": "^2.24.0",
     "webhandle": "^1.0.21",
     "webhandle-emailer": "^1.0.6",
