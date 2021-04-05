@@ -3,6 +3,7 @@ __::app_pre__
 		<h1>Menu</h1>
 		<ul class="main-menu">
 			<li><a href="/user">Users</a></li>
+			<li><a href="/admin/page-editor/create-page">Create New Page</a></li>
 			<li><a href="/">Site</a></li>
 			<li><a href="/logout">Logout</a></li>
 		</ul>

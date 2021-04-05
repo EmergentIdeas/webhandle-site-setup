@@ -9,6 +9,33 @@ let loadTemplates = function() {
 		callback(templates[name])
 	})
 
+	templates['currentYear'] = (data) => {
+		return moment().format('YYYY')
+	}
+	templates['dus'] = (data) => {
+		let length
+		try {
+			if(Number.isInteger(data)) {
+				length = data	
+			}
+			else if(Number.isInteger(parseInt(data))) {
+				length = parseInt(data)
+			}
+		}
+		catch(e) {}
+		if(length) {
+			let s = ''
+			while(length > 0) {
+				s += '_'
+				length--
+			}
+			return s
+		}
+		else {
+			return '__'
+		}
+		return moment(data).format('MMMM Do YYYY, h:mm:ss a')
+	}
 	templates['humanDate'] = (data) => {
 		return moment(data).format('MMMM Do YYYY, h:mm:ss a')
 	}

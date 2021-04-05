@@ -41,10 +41,12 @@
     "webhandle-emailer": "^1.0.6",
     "webhandle-menus-1": "^1.0.4",
     "webhandle-page-editor": "^1.0.5",
+    "webhandle-page-server": "^1.0.11",
     "webhandle-redirector": "^1.0.0",
     "webhandle-users": "^1.0.5"
   },
   "devDependencies": {
+    "@dankolz/webp-detection": "^1.0.1",
     "browserify": "^14.4.0",
     "less": "^3.10.3",
     "onchange": "^3.2.1",

@@ -17,7 +17,7 @@ __::start__
 		<div class="logo-side">
 			<img src="__vrsc__/img/logo-footer.png" />
 			<div class="copyright">
-				© Copyright 2018.  All rights reserved.
+				© Copyright __::currentYear__.  All rights reserved.
 			</div>
 		</div>
 	</div>
