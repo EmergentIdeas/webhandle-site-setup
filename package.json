@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -30,17 +30,23 @@
   },
   "homepage": "https://github.com/EmergentIdeas/webhandle-site-setup#readme",
   "dependencies": {
+    "@dankolz/ei-people-groups-1": "^1.0.2",
+    "@dankolz/webhandle-jobs": "^1.0.1",
     "ei-form-styles-1": "^1.0.0",
     "ei-grid-1": "^1.0.4",
+    "ei-slideshow-1": "^1.0.1",
     "express": "^4.17.1",
     "file-sink": "^1.0.4",
     "filter-log": "0.0.4",
     "jquery": "^1.12.4",
     "moment": "^2.24.0",
+    "shiner": "^1.0.7",
+    "swipe-listener": "^1.3.0",
     "webhandle": "^1.0.21",
+    "webhandle-calendar": "^1.0.13",
     "webhandle-emailer": "^1.0.6",
     "webhandle-menus-1": "^1.0.4",
-    "webhandle-page-editor": "^1.0.5",
+    "webhandle-page-editor": "^1.0.11",
     "webhandle-page-server": "^1.0.11",
     "webhandle-redirector": "^1.0.0",
     "webhandle-users": "^1.0.5"

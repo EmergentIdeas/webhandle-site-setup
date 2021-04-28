@@ -9,8 +9,18 @@ let loadTemplates = function() {
 		callback(templates[name])
 	})
 
+	templates['humanDateOnly'] = (data) => {
+		return moment(data).format('MMMM Do, YYYY')
+	}
+	templates['humanTimeOnly'] = (data) => {
+		return moment(data).format('h:mm a')
+	}
+
+	templates['slugify'] = (data) => {
+		return slug(data)
+	}
 	templates['currentYear'] = (data) => {
-		return moment().format('YYYY')
+		return moment(data).format('YYYY')
 	}
 	templates['dus'] = (data) => {
 		let length

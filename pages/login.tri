@@ -1,9 +1,14 @@
 __::start__
-<div class="page page-inner">
-	<section class="content clipper tight-top">
+<link href="__vrsc__/css/app.css" rel="stylesheet">
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="page page-inner app-page">
+	<section class="content">
 		<div class="container">
 			<h1>Login</h1>
-			<form method="post" action="/login">
+			<form method="post" action="/login" >
 				<label>Username
 					<input type="text" name="name" required="required">
 				</label>
@@ -12,10 +17,16 @@ __::start__
 					<input type="password" name="password" required="required">
 				</label>
 				<br />
-				<button type="submit">Log In</button>
+				<button class="btn btn-default" type="submit">Log In</button>
 			</form>
 		</div>
 	</section>
 </div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <script type="text/javascript" src="/js/app.js" async="async"></script>
 </body></html>

@@ -1,11 +1,26 @@
 __::app_pre__
-	<section class="">
+__flashMsg??this::flash-message__
+	<section class="page-main-menu">
 		<h1>Menu</h1>
-		<ul class="main-menu">
-			<li><a href="/user">Users</a></li>
-			<li><a href="/admin/page-editor/create-page">Create New Page</a></li>
-			<li><a href="/">Site</a></li>
-			<li><a href="/logout">Logout</a></li>
-		</ul>
+		<div class="main-menu-block">
+			<h2>Basics</h2>
+			<ul class="main-menu">
+				<li><a href="/user"><h3>Users</h3><p>Change who can access the administration tools.</p></a></li>
+				<li><a href="/webhandle-page-editor/admin/page-editor/create-page"><h3>Create New Page</h3><p>Add pages to the website.</p></a></li>
+				<li><a href="/webhandle-page-editor/admin/page-editor/menu-editor"><h3>Menu Editor</h3><p>Change the main navigation.</p></a></li>
+				<li><a href="/webhandle-page-editor/upload-files"><h3>Upload Files</h3><p>Browse and Upload files</p></a></li>
+			</ul>
+		</div>
+		<div class="main-menu-block">
+			<h2>Organization Info</h2>
+			<ul class="main-menu">
+				<li><a href="/events/menu"><h3>Events</h3><p>Set up events and programs which people can attend.</p></a></li>
+				<li><a href="/peoplegroups"><h3>Staff Profiles</h3><p>Show the world who you are.</p></a></li>
+				<li><a href="/news-items"><h3>News</h3><p>Create stories to tell the world about what's happening.</p></a></li>
+				<li><a href="/news-types"><h3>News Types</h3><p>Set the types of stories.</p></a></li>
+				<li><a href="/jobs"><h3>Jobs</h3><p>List the jobs in your organization.</p></a></li>
+				<li><a href="/slideshow"><h3>Slides</h3><p>Configure slideshows for your pages.</p></a></li>
+			</ul>
+		</div>
 	</section>
 __::app_post__
