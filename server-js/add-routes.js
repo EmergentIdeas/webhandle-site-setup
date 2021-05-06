@@ -43,7 +43,7 @@ module.exports = function(app) {
 	})
 
 	calendarInit({
-		mongoDb: webhandle.dbs.[dbName].db,
+		mongoDb: webhandle.dbs[dbName].db,
 		pretemplate: 'app_pre',
 		posttemplate: 'app_post'
 	})

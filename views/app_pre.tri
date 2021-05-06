@@ -46,4 +46,7 @@ __::start__
 		<a href="/">Site</a>
 		<a href="/logout">Logout</a>
 	</div>
+	<div class="conatiner app-page">
+		__flashMsg??this::flash-message__
+	</div>
 	<div class="container app-page">
