@@ -10,6 +10,7 @@ require('ckeditor')
 // CKEDITOR.config.customConfig = '/ck-textarea-config.js'
 
 /*
+
 require('webhandle-page-editor/app-client')
 require('../node_modules/@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
 require('../node_modules/@dankolz/webhandle-jobs/client-js/jobs-client.js')
