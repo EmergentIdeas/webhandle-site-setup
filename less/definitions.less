@@ -7,11 +7,13 @@
 	@phone-width:               550px;
 	@iphone-4-landscape-width:	480px;
 	@iphone-4-width: 			320px;
+	@page-side-padding: 			10px;
+	@outside-page-padding: 			58px;
+
 }
 
 .setup-width-definitions();
 
-@page-side-padding: 			10px;
 
 /*
  * The base font size which makes the chosen font match photoshop.
@@ -28,6 +30,24 @@
 
 .open-sans() {
     font-family: 'Open Sans', sans-serif;
+}
+
+.menu-link() {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}	
+
+.link-inherit() {
+	a {
+		.menu-link;
+		font-size: inherit;
+		color: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		font-family: inherit;
+	}
 }
 
 

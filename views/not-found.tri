@@ -1,25 +1,20 @@
 __::start__
-<header>
-	<div class="container">
-		<img class="logo" src="__vrsc__/img/logo-top.png" />
-		<ul class="menu">
-			__menu.children::webhandle-menus-1/menu-item-li__
-		</ul>
-	</div>
-</header>
-<div class="container">
-	<h1>Not Found</h1>
-	<p>We looked everywhere but we couldn't find what you're looking for.</p>
-</div>
-
-<footer>
-	<div class="container">
-		<div class="logo-side">
-			<img src="__vrsc__/img/logo-footer.png" />
-			<div class="copyright">
-				© Copyright __::currentYear__.  All rights reserved.
+<div class="page page-inner">
+	<section class="jumbo home-banner-picture-background">
+		__::inner-header__
+		<div class="msg container-wrapper">
+			<div class="inner edit-content-inline container">
+				<h1>Not Found</h1>
 			</div>
 		</div>
+
+	</section>
+	<div class="container-wrapper">
+		<main class="container edit-content-inline">
+			<h1>We Couldn't Find Your Request</h1>
+			<p>Please check the URL and try again.</p>	
+		</main>
 	</div>
-</footer>
+	__::footer__
+</div>
 __::end__

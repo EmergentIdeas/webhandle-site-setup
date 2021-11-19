@@ -1,23 +1,21 @@
 __::start__
-<header>
-	<div class="container">
-		
-		<ul class="menu">
-			__menu.children::webhandle-menus-1/menu-item-li__
-		</ul>
-	</div>
-</header>
-<section class="jumbo">
-</section>
-
-
-<footer>
-	<div class="container">
-		<div class="">
-			<div class="copyright">
-				© Copyright __::currentYear__.  All rights reserved.
+<div class="page page-landing">
+	<section class="jumbo home-banner-picture-background">
+		__::inner-header__
+		<div class="msg container-wrapper">
+			<div class="inner edit-content-inline container">
+				<h1>The Jumbo Headline</h1>
+				<h2>The Jumbo Subhead</h2>
 			</div>
 		</div>
+
+	</section>
+	<div class="container-wrapper">
+		<main class="container edit-content-inline">
+			<h1>The Page Headline</h1>
+			<p>The main page content</p>	
+		</main>
 	</div>
-</footer>
+	__::footer__
+</div>
 __::end__

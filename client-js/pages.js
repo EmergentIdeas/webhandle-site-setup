@@ -7,8 +7,6 @@ var tripartite = tri
 
 
 /*
-
-
 var SwipeListener = require('swipe-listener')
 
 var Shiner = require('shiner/shiner-no-jquery')($)
@@ -90,8 +88,17 @@ else {
 
 */
 
-$('header .tribar').on('click', function(evt) {
-	evt.preventDefault()
-	$('header .menu').toggleClass('open')
-	$('body').css('overflow', 'hidden');
+
+$(function() {
+	$('header .tribar').on('click', function(evt) {
+		evt.preventDefault()
+		$('header nav').toggleClass('open')
+		$('body').toggleClass('locked');
+	})
+	$('header .menu li').removeClass('current')
+	$('header .menu a').each(function() {
+		if($(this).attr('href') == window.location.pathname) {
+			$(this).closest('li').addClass('current')
+		}
+	})
 })
