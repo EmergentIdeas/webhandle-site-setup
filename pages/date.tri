@@ -1,0 +1,3 @@
+__new Date()__
+__require('webhandle').resourceVersion = new Date().getTime()__
+__require('webhandle').resourceVersion__
