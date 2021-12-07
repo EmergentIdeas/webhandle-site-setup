@@ -49,9 +49,7 @@ mkdir.on('close', function(code) {
 	}
 	
 	for(let key in buildPackage.scripts) {
-		if(!destPackage.scripts[key]) {
-			destPackage.scripts[key] = buildPackage.scripts[key]
-		}
+		destPackage.scripts[key] = buildPackage.scripts[key]
 	}
 	fs.writeFileSync(path.resolve(cwd, 'package.json'), JSON.stringify(destPackage, null, "\t"))
 })
