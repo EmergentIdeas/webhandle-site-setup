@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
