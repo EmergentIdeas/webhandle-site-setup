@@ -4,6 +4,7 @@
 // const path = require('path')
 // const express = require('express');
 
+// const ConfigurationDreck = require('dreck/configuration-dreck')
 
 const filog = require('filter-log')
 let log
@@ -21,6 +22,14 @@ module.exports = function(app) {
 	log = filog(dbName)
 	//	app.use('/', require('./routes/index'));
 
+	/*
+	let preSecuredRouter = express.Router()
+	let securedRouter = require('webhandle-users/utils/allow-group')(
+		['administrators'],
+		preSecuredRouter
+	)
+	webhandle.routers.primary.use(securedRouter)
+	*/
 
 	// Add the user auth
 	// require('./enable-users')(dbName, defaultAdminPassword)
@@ -50,6 +59,24 @@ module.exports = function(app) {
 	peopleGroupsIntegrator(dbName)
 	jobsIntegrator(dbName)
 	require('@dankolz/webhandle-news/webhandle-news-integrator')(dbName)
+	*/	
+	
+	/*	
+	if(!webhandle.dbs[dbName].collections.configuration) {
+		webhandle.dbs[dbName].collections.configuration = webhandle.dbs[dbName].db.collection('configuration')
+	}
+	let siteConfig = new ConfigurationDreck({
+		mongoCollection: webhandle.dbs[dbName].collections.configuration,
+		templatePrefix: 'site-config/',
+		locals: {
+			pretemplate: 'app_pre',
+			posttemplate: 'app_post'
+		},
+		afterModifyUrl: '/menu',
+		configurationId: 'siteconfig'
+	})
+	let siteConfigRouter = siteConfig.addToRouter(express.Router())
+	preSecuredRouter.use('/admin/config', siteConfigRouter)
 	*/
 	
 	

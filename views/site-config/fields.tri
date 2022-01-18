@@ -1,0 +1,9 @@
+
+<label>
+	Facebook link:
+	<input type="text" name="facebookLink"  />
+</label>
+<label>
+	Default contact address:
+	<input type="text" name="defaultContactAddress"  />
+</label>
