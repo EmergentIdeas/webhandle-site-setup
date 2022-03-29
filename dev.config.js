@@ -11,8 +11,8 @@ module.exports = {
             "env": {
                 PORT: 3000,
 				NODE_ENV: 'development',
-				trackerSecretKey: 'CHANGE THIS: I believe that at the end of the century the use of words and general educated opinion will have altered so much that one will be able to speak of machines thinking without expecting to be contradicted.',
-				// webhandleEmail: {
+				trackerSecretKey: 'CHANGE THIS: I believe that at the end of the century the use of words and general educated opinion will have altered so much that one will be able to speak of machines thinking without expecting to be contradicted.'
+				// , webhandleEmail: {
                 //     transport: {
                 //         service: "gmail",
                 //         auth: {
@@ -22,7 +22,7 @@ module.exports = {
                 //     },
                 //     destDefault: "dan@example.com"
 				// }
-				// webhandleEmail: {
+				// , webhandleEmail: {
                 //     transport: {
                 //         host: "smtp.office365.com",
                 //         port: 587,

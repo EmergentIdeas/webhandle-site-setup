@@ -19,8 +19,8 @@
     "pm2-bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch' 'npm run dev-server-js-watch'",
     "start": "node ./web-server.js",
     "debug": "node --inspect --inspect-brk ./web-server.js",
-	"test": "node_modules/mocha/bin/mocha",
-	"testDebug": "node --inspect-brk node_modules/mocha/bin/mocha"
+    "test": "node_modules/mocha/bin/mocha",
+    "testDebug": "node --inspect-brk node_modules/mocha/bin/mocha"
   },
   "bin": {
     "webhandle-site-setup": "./bin/prepare.js"
@@ -34,6 +34,7 @@
   "dependencies": {
     "@dankolz/ei-css-grid": "^1.0.0",
     "@dankolz/ei-people-groups-1": "^1.0.2",
+    "@dankolz/social-head-attributes": "^1.0.0",
     "@dankolz/webhandle-jobs": "^1.0.1",
     "@dankolz/webhandle-news": "^1.0.3",
     "ei-form-styles-1": "^1.0.0",

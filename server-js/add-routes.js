@@ -77,6 +77,8 @@ module.exports = function(app) {
 	})
 	let siteConfigRouter = siteConfig.addToRouter(express.Router())
 	preSecuredRouter.use('/admin/config', siteConfigRouter)
+	// Fetch configuration like:
+	// let config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
 	*/
 	
 	
@@ -91,5 +93,16 @@ module.exports = function(app) {
 		next()
 	})
 	*/
+
+    webhandle.routers.primary.use((req, res, next) => {
+        let pageInfo = res.locals.pageInfo = res.locals.pageInfo || {}
+        const url = req.originalUrl;
+
+        const fullUrl = `https://www.thesitename.com${url}`
+        pageInfo.reqURL = fullUrl
+        next()
+    })
+
+	webhandle.addTemplateDir(path.join(webhandle.projectRoot, 'node_modules/@dankolz/social-head-attributes/views'))
 }
 
