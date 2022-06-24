@@ -1,7 +1,7 @@
 // const webhandle = require('webhandle')
 // const commingle = require('commingle')
 // const usersSetup = require('webhandle-users/integrate-with-webhandle')
-// const path = require('path')
+const path = require('path')
 // const express = require('express');
 
 // const ConfigurationDreck = require('dreck/configuration-dreck')
@@ -18,7 +18,8 @@ const slideIntegrator = require('ei-slideshow-1/server-js/webhandle-slideshow-in
 */
 
 module.exports = function(app) {
-	let dbName = "thedbname"
+	let firstDb = Object.keys(webhandle.dbs)[0]
+	let dbName = firstDb || "unknowndb"
 	log = filog(dbName)
 	//	app.use('/', require('./routes/index'));
 
