@@ -1,0 +1,8 @@
+<tr>
+	<td>
+		<a href="/admin/contact-message/__this._id__">__date::humanDateTime__</a>
+	</td>	
+	<td>
+		__messageType__	
+	</td>
+</tr>

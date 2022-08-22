@@ -52,4 +52,18 @@ mkdir.on('close', function(code) {
 		destPackage.scripts[key] = buildPackage.scripts[key]
 	}
 	fs.writeFileSync(path.resolve(cwd, 'package.json'), JSON.stringify(destPackage, null, "\t"))
+	
+	const npmInstall = spawn('npm', ['install'])
+	npmInstall.on('close', function(code) {
+		const compileLess = spawn('npm', ['run', 'less-build'])
+		const compileJs = spawn('npm', ['run', 'client-js-build'])
+
+		compileLess.on('close', function(code) {
+			console.log('compiled less')
+		})
+		compileJs.on('close', function(code) {
+			console.log('compiled js')
+		})
+
+	})
 })

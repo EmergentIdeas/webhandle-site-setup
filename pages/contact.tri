@@ -1,0 +1,40 @@
+__::start__
+<div class="page page-inner">
+	<section class="jumbo home-banner-picture-background">
+		__::inner-header__
+		<div class="msg container-wrapper">
+			<div class="inner edit-content-inline container">
+				<h1>The Jumbo Headline</h1>
+				<h2>The Jumbo Subhead</h2>
+			</div>
+		</div>
+
+	</section>
+	<div class="container-wrapper">
+		<main class="container edit-content-inline">
+			<h1>Contact Us</h1>
+			<form method="post" action="/contact">
+				<label>
+					Name:
+					<input type="text" name="name" />
+				</label>	
+				<label>
+					Email:
+					<input type="text" name="email" />
+				</label>	
+				<label>
+					Phone:
+					<input type="text" name="phone" />
+				</label>	
+				<label>
+					Message:
+					<textarea name="message" ></textarea>
+				</label>	
+				
+				<button type="submit">Submit</button>
+			</form>
+		</main>
+	</div>
+	__::footer__
+</div>
+__::end__

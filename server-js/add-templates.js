@@ -15,6 +15,9 @@ let loadTemplates = function() {
 	templates['humanTimeOnly'] = (data) => {
 		return moment(data).format('h:mm a')
 	}
+	templates['humanDateTime'] = (data) => {
+		return moment(data).format('MMMM Do, YYYY h:mm a')
+	}
 
 	templates['slugify'] = (data) => {
 		return slug(data)

@@ -5,7 +5,6 @@ Run:
 ```
 npm install --save webhandle-site-setup
 ./node_modules/.bin/webhandle-site-setup
-npm install
 
 ```
 Then change `dev.config.js` setting appName to the name of your package name.

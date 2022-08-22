@@ -1,9 +1,44 @@
 
+<h3>Header / Footer Info</h3>
+<label>
+	Physical address:
+	<textarea name="physicalAddress" ></textarea>
+</label>
+<label>
+	Business phone:
+	<input type="text" name="businessPhone"  />
+</label>
+<label>
+	Business fax:
+	<input type="text" name="businessFax"  />
+</label>
+<label>
+	Business contact email:
+	<input type="text" name="businessContactEmail"  />
+</label>
+
+
+<h3>Social Media</h3>
 <label>
 	Facebook link:
 	<input type="text" name="facebookLink"  />
 </label>
 <label>
-	Default contact address:
-	<input type="text" name="defaultContactAddress"  />
+	Twitter link:
+	<input type="text" name="twitterLink"  />
+</label>
+<label>
+	Instagram link:
+	<input type="text" name="instagramLink"  />
+</label>
+<label>
+	LinkedIn link:
+	<input type="text" name="linkedinLink"  />
+</label>
+
+
+<h3>Contact Forms</h3>
+<label>
+	Form recipient email:
+	<input type="text" name="defaultContactEmail"  />
 </label>

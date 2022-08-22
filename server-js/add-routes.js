@@ -2,7 +2,7 @@
 // const commingle = require('commingle')
 // const usersSetup = require('webhandle-users/integrate-with-webhandle')
 const path = require('path')
-// const express = require('express');
+const express = require('express');
 
 // const ConfigurationDreck = require('dreck/configuration-dreck')
 
@@ -30,16 +30,16 @@ module.exports = function(app) {
 		preSecuredRouter
 	)
 	webhandle.routers.primary.use(securedRouter)
-	*/
 
 	// Add the user auth
-	// require('./enable-users')(dbName, defaultAdminPassword)
+	require('./enable-users')(dbName, defaultAdminPassword)
 	
 	// Custom menu
-	// require('./enable-menu')()
+	require('./enable-menu')()
 
 	// Add the page editor
-	// require('./enable-page-editor')()
+	require('./enable-page-editor')()
+	*/
 
 	// add a couple javascript based tripartite templates. More a placeholder
 	// for project specific templates than it is a useful library.
@@ -78,9 +78,9 @@ module.exports = function(app) {
 	})
 	let siteConfigRouter = siteConfig.addToRouter(express.Router())
 	preSecuredRouter.use('/admin/config', siteConfigRouter)
+	*/
 	// Fetch configuration like:
 	// let config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
-	*/
 	
 	
 	/*
