@@ -82,6 +82,16 @@ module.exports = function(app) {
 	// Fetch configuration like:
 	// let config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
 	
+/*
+    let idex = require('webhandle-indexer')
+    idex.init(idex.getDefaultOptions({
+        projectRoot: webhandle.projectRoot
+    }))
+
+    app.use(require('./routes/search'))
+*/
+
+
 	
 	/*
 	webhandle.pageServer.preRun.push((req, res, next) => {

@@ -1287,13 +1287,13 @@ body {
 .container .ie6,
 .container .ie7,
 .container .ie8 {
-  width: 1100px;
+  max-width: 1100px;
   padding-left: 0;
   padding-right: 0;
 }
 @media (min-width: 1100px) {
   .container {
-    width: 1100px;
+    max-width: 1100px;
     padding-left: 0;
     padding-right: 0;
   }

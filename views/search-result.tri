@@ -1,0 +1,10 @@
+
+<div class="search-result">
+	<a href="/__this.path__">
+		<strong>__this.title__</strong>
+	</a>
+		<br/>
+		__description__
+	
+	
+</div>

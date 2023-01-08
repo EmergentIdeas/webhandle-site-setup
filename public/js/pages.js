@@ -11036,7 +11036,7 @@ var calculateRelativePath = function(parentPath, currentPath) {
 
 module.exports = calculateRelativePath
 },{}],4:[function(require,module,exports){
-(function (global){(function (){
+(function (global){
 
 var calculateRelativePath = require('./calculate-relative-path')
 
@@ -11589,5 +11589,5 @@ if(global) {
 }
 
 
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./calculate-relative-path":3}]},{},[1]);

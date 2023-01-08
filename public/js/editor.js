@@ -2,6 +2,7 @@
 var $ = require('jquery')
 var tri = require('tripartite')
 
+window.CKEDITOR_BASEPATH = '/'
 require('./pages')
 
 
@@ -15,7 +16,7 @@ editing({
 
 
 
-},{"./pages":2,"jquery":7,"tripartite":9,"webhandle-page-editor":11}],2:[function(require,module,exports){
+},{"./pages":2,"jquery":7,"tripartite":10,"webhandle-page-editor":12}],2:[function(require,module,exports){
 window.require = require
 window.jQuery = window.$ = require('jquery')
 
@@ -120,7 +121,7 @@ $(function() {
 		}
 	})
 })
-},{"jquery":7,"tripartite":9}],3:[function(require,module,exports){
+},{"jquery":7,"tripartite":10}],3:[function(require,module,exports){
 /*
 Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
@@ -1450,7 +1451,7 @@ Dialog.prototype.close = function() {
 module.exports = Dialog
 
 
-},{"./dialog.tmpl":5,"jquery":6,"tripartite":9}],5:[function(require,module,exports){
+},{"./dialog.tmpl":5,"jquery":6,"tripartite":10}],5:[function(require,module,exports){
 module.exports = "##dialogFrame##\n<div class=\"dialog-frame\">\n\t<div class=\"mask\">&nbsp;</div>\n\t<div class=\"dialog-holder\">\n\t\t<div class=\"the-dialog\">\n\t\t\t<div class=\"head\">\n\t\t\t\t__title__\n\t\t\t</div>\n\t\t\t<div class=\"body\">\n\t\t\t</div>\n\t\t\t<div class=\"foot\">\n\t\t\t\t__buttons::button__\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n##button##\n<button class=\"__classes__\" type=\"button\">__label__</button>\n##dialogFrameStyles##\n.dialog-frame {\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tz-index: 10000;\n\topacity: 0;\n\ttransition: opacity .3s;\n\toverflow: hidden;\n}\n\n.dialog-frame.open {\n\topacity: 1;\n}\n\n.dialog-frame .mask {\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground-color: #333333;\n\topacity: .7;\n\theight: 100%;\n\tz-index: 0;\n}\n\n.dialog-frame .dialog-holder {\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmargin-left: 50%;\n}\n\n.dialog-frame .the-dialog {\n\tposition: relative;\n\tdisplay: inline-block;\n\ttop: 50%;\n\tmax-width: 90%;\n\tmax-height: 90%;\n\tz-index: 1;\n\tborder-radius: 5px;\n\tbackground-color: white;\n\toverflow: hidden;\n\ttransform: translate(-50%, -50%) scale(.84);\n\ttransition: transform 0.262s cubic-bezier(.77,-1.72,.08,1);\n}\n\n.dialog-frame.open .the-dialog {\n\ttransform: translate(-50%, -50%) scale(1);\n}\n\n\n.dialog-frame .the-dialog .head {\n\tborder-bottom: solid #aaaaaa 1px;\n\tline-height: 2em;\n\tpadding: 0 10px;\n}\n\n.dialog-frame .the-dialog .body {\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\toverflow: auto;\n\tmax-height: calc(90vh - 75px);\n}\n\n.dialog-frame .the-dialog .foot {\n\tborder-top: solid #aaaaaa 1px;\n\tpadding: 10px;\n}\n\n.dialog-frame .the-dialog .foot button {\n\tmargin-right: 15px;\n}";
 
 },{}],6:[function(require,module,exports){
@@ -23347,6 +23348,192 @@ return jQuery;
 } );
 
 },{}],8:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],9:[function(require,module,exports){
 var calculateRelativePath = function(parentPath, currentPath) {
 	if(!parentPath) {
 		return currentPath
@@ -23395,8 +23582,8 @@ var calculateRelativePath = function(parentPath, currentPath) {
 }
 
 module.exports = calculateRelativePath
-},{}],9:[function(require,module,exports){
-(function (global){(function (){
+},{}],10:[function(require,module,exports){
+(function (global){
 
 var calculateRelativePath = require('./calculate-relative-path')
 
@@ -23949,9 +24136,9 @@ if(global) {
 }
 
 
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./calculate-relative-path":8}],10:[function(require,module,exports){
-(function (global){(function (){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./calculate-relative-path":9}],11:[function(require,module,exports){
+(function (global){
 //     Underscore.js 1.9.1
 //     http://underscorejs.org
 //     (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -25645,8 +25832,8 @@ if(global) {
   }
 }());
 
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],11:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],12:[function(require,module,exports){
 
 
 var CKEditorDrop = require('ei-pic-browser/ckeditor-drop')
@@ -25669,9 +25856,10 @@ var pageEditorSetup = function(options) {
 	$('head').append('<link rel="stylesheet" href="' + cssLocation + '" type="text/css" />');
 	
 	$('body').append('<div class="webhandle-page-editor-tools">' +
+	'<a href="#" title="Edit Page" class="start-editing">E</a>' +
 	'<a href="#" title="Properties" class="property-button">P</a>' +
 	'<a href="#" title="Save" class="save-button">S</a>' +
-	'<a href="#" title="Edit Page" class="start-editing">E</a>' +
+	'<a href="/menu" title="Menu Page" class="go-to-menu">M</a>' +
 	'</div>')
 	
 	var enablePageSave = function() {
@@ -25696,6 +25884,7 @@ var pageEditorSetup = function(options) {
 		startEditing: function() {
 			$('html').addClass('editing-page')
 			require('ckeditor')
+			CKEDITOR.disableAutoInline = true
 			
 			var index = 0
 			$(editableSelector).each(function() {
@@ -25733,7 +25922,7 @@ var pageEditorSetup = function(options) {
 		}
 	}
 	
-	$.get('/webhandle-page-editor' + window.location.pathname)
+	$.get('/webhandle-page-editor/admin/api/v1/page-properties' + window.location.pathname)
 	.done(function(data) {
 		monitor.pageInfo = data
 	})
@@ -25755,7 +25944,9 @@ var pageEditorSetup = function(options) {
 			alert('saved')
 		})
 	})
-	
+
+	/* The dialog based way of doing properties
+
 	$('.webhandle-page-editor-tools .property-button').click(function(evt) {
 		evt.preventDefault()
 		propertiesDialog = new Dialog({
@@ -25787,14 +25978,19 @@ var pageEditorSetup = function(options) {
 		})
 		propertiesDialog.open()
 	})
+	*/
+	$('.webhandle-page-editor-tools .property-button').on('click', function(evt) {
+		window.location = '/webhandle-page-editor/admin/page-editor/v1/page-properties' + window.location.pathname
+	})
 	
 }
 
 module.exports = pageEditorSetup
-},{"./input-template.tri":12,"./textarea-template.tri":18,"ckeditor":3,"ei-dialog":4,"ei-pic-browser/ckeditor-drop":13,"ei-pic-browser/pic-upload":15}],12:[function(require,module,exports){
+
+},{"./input-template.tri":13,"./textarea-template.tri":24,"ckeditor":3,"ei-dialog":4,"ei-pic-browser/ckeditor-drop":14,"ei-pic-browser/pic-upload":18}],13:[function(require,module,exports){
 var tri = require("tripartite"); var t = "<label>\n\t__label__\n\t<input type=\"text\" name=\"__name__\" id=\"__id__\" value=\"__value__\"\/>\n<\/label>"; 
 module.exports = tri.addTemplate("webhandle-page-editor/input-template", t); 
-},{"tripartite":9}],13:[function(require,module,exports){
+},{"tripartite":23}],14:[function(require,module,exports){
 var $ = require('jquery')
 var PicUpload = require('./pic-upload')
 var Dialog = require('ei-dialog')
@@ -25897,9 +26093,126 @@ ckeditorDrop.prototype.render = function() {
 }
 
 module.exports = ckeditorDrop
-},{"./pic-upload":15,"ei-dialog":4,"jquery":14,"underscore":10}],14:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],15:[function(require,module,exports){
+},{"./pic-upload":18,"ei-dialog":16,"jquery":21,"underscore":11}],15:[function(require,module,exports){
+var $ = window.jQuery
+
+var tri = require('tripartite').createBlank()
+var templates = require('./dialog.tmpl')
+tri.parseTemplateScript(templates)
+
+templates = tri.templates
+
+var addStylesIfNeeded = function() {
+	if($('#dialog-frame-styles').length == 0) {
+		$('head').append('<style type="text/css" id="dialog-frame-styles">' +
+		templates['dialogFrameStyles']() +
+		'</style>')
+	}
+}
+
+var createButtonHandler = function(selector, dialog) {
+	return function() {
+		var result = dialog.on[selector]()
+		if(typeof result == 'boolean') {
+			if(result) {
+				dialog.close()
+			}
+		}
+		else {
+			dialog.close()
+		}
+	}
+}
+
+var Dialog = function(options) {
+	options = options || {}
+	options.on = options.on || {}
+	this.title = options.title
+	this.dialogFrameClass = options.dialogFrameClass
+	
+	if(options.buttons) {
+		this.buttons = options.buttons
+	}
+	else {
+		this.buttons = [
+			{
+				classes: 'btn btn-primary btn-ok',
+				label: 'OK'
+			},
+			{
+				classes: 'btn btn-cancel',
+				label: 'Cancel'
+			}
+		]
+	}
+	this.on = options.on
+	
+	if(!this.on['.btn-cancel']) {
+		this.on['.btn-cancel'] = function() {
+		}
+	}
+	if(!this.on['.btn-close']) {
+		this.on['.btn-close'] = function() {
+		}
+	}
+	this.body = options.body
+}
+
+Dialog.prototype.getBodySelector = function() {
+	return '#' + this.id + ' .body'
+}
+
+Dialog.prototype.getFrameSelector = function() {
+	return '#' + this.id 
+}
+
+Dialog.prototype.open = function() {
+	this.id = "dialog" + (new Date().getTime())
+	addStylesIfNeeded()
+	$('body').append(templates['dialogFrame'](this))
+	
+	let bodySelector = this.getBodySelector()
+	let frameSelector = this.getFrameSelector()
+	
+	if(typeof this.body == 'function') {
+		$(bodySelector).append(this.body($(bodySelector).get(0)))
+	}
+	else if(typeof this.body == 'string') {
+		$(bodySelector).append(this.body)
+	}
+	
+	for(var selector in this.on) {
+		$(frameSelector).on('click', selector, createButtonHandler(selector, this))
+	}
+	
+	setTimeout(function() {
+		var head = $(frameSelector + ' .head').outerHeight()
+		var foot = $(frameSelector + ' .foot').outerHeight()
+		var topAndBottom = head + foot
+		$(bodySelector).css('max-height', 'calc(90vh - ' + topAndBottom + 'px)')
+		$(frameSelector).addClass('open')
+	})
+	return this
+}
+
+Dialog.prototype.close = function() {
+	$(this.getFrameSelector()).remove()
+	return this
+}
+
+module.exports = Dialog
+
+
+},{"./dialog.tmpl":17,"tripartite":23}],16:[function(require,module,exports){
+var $ = typeof jQuery == 'undefined' ? require('jquery') : jQuery
+
+module.exports = require('./dialog-no-jquery')
+
+
+},{"./dialog-no-jquery":15,"jquery":21}],17:[function(require,module,exports){
+module.exports = "##dialogFrame##\n<div class=\"dialog-frame __dialogFrameClass__\" __id::id-attribute__ >\n\t<div class=\"mask\">&nbsp;</div>\n\t<div class=\"dialog-holder\">\n\t\t<div class=\"the-dialog\">\n\t\t\t<div class=\"close btn-close\">&times;</div>\n\t\t\t<div class=\"head\">\n\t\t\t\t__title__\n\t\t\t</div>\n\t\t\t<div class=\"body\">\n\t\t\t</div>\n\t\t\t<div class=\"foot\">\n\t\t\t\t__buttons::button__\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n##id-attribute##\n id=\"__this__\" \n##button##\n<button class=\"__classes__\" type=\"button\">__label__</button>\n##dialogFrameStyles##\n.dialog-frame {\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tz-index: 10000;\n\topacity: 0;\n\ttransition: opacity .3s;\n\toverflow: hidden;\n}\n\n.dialog-frame.open {\n\topacity: 1;\n}\n\n.dialog-frame .mask {\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground-color: #333333;\n\topacity: .7;\n\theight: 100%;\n\tz-index: 0;\n}\n\n.dialog-frame .dialog-holder {\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmargin-left: 50%;\n}\n\n.dialog-frame .the-dialog {\n\tposition: relative;\n\tdisplay: inline-block;\n\ttop: 50%;\n\tmax-width: 90%;\n\tmax-height: 90%;\n\tz-index: 1;\n\tborder-radius: 5px;\n\tbackground-color: white;\n\toverflow: hidden;\n\ttransform: translate(-50%, -50%) scale(.84);\n\ttransition: transform 0.262s cubic-bezier(.77,-1.72,.08,1);\n}\n\n.dialog-frame.open .the-dialog {\n\ttransform: translate(-50%, -50%) scale(1);\n}\n\n.dialog-frame .the-dialog .close {\n\tposition: absolute;\n\ttop: 0px;\n\tright: 0px;\n\tpadding: 10px;\n\tcursor: pointer;\n}\n\n.dialog-frame .the-dialog .head {\n\tborder-bottom: solid #aaaaaa 1px;\n\tline-height: 2em;\n\tpadding: 0 10px;\n}\n\n.dialog-frame .the-dialog .body {\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\toverflow: auto;\n\tmax-height: calc(90vh - 75px);\n}\n\n.dialog-frame .the-dialog .foot {\n\tborder-top: solid #aaaaaa 1px;\n\tpadding: 10px;\n}\n\n.dialog-frame .the-dialog .foot button {\n\tmargin-right: 15px;\n}";
+
+},{}],18:[function(require,module,exports){
 var $ = require('jquery')
 var resizeImg = require('./resize-img')
 
@@ -26180,7 +26493,7 @@ PicUpload.prototype.cleanup = function() {
 
 
 module.exports = PicUpload
-},{"./resize-img":16,"./upload.tmpl":17,"jquery":14,"tripartite":9}],16:[function(require,module,exports){
+},{"./resize-img":19,"./upload.tmpl":20,"jquery":21,"tripartite":23}],19:[function(require,module,exports){
 var resizeImage = function(/*image or base64 encoded data of image*/ imageData, maxSize, quality) {
 	try {
 		quality = quality || .7
@@ -26238,10 +26551,597 @@ var resizeImage = function(/*image or base64 encoded data of image*/ imageData, 
 }
 
 module.exports = resizeImage
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = "##uploadOptions##\n<div class=\"pic-upload-options\">\n\t<div class=\"img-holder\">\n\t</div>\n\t<label>File name\n\t\t<input name=\"name\" type=\"text\" value=\"__name__\"/>\n\t</label>\n\t<label>Description\n\t\t<input name=\"description\" type=\"text\" value=\"__name__\"/>\n\t</label>\n\t__resizeOptions.length > 0??this::maxSize__\n\t__imageLayouts.length > 0??this::imageLayout__\n</div>\n\n##maxSize##\n<label>Max size\n\t<select name=\"resize\">\n\t\t__resizeOptions::resizeOption__\n\t</select>\n</label>\n\n##imageLayout##\n<label>Special layout\n\t<select name=\"specialLayout\">\n\t\t__imageLayouts::layoutOption__\n\t</select>\n</label>\n\n\n##resizeOption##\n<option value=\"__max__\">__name__</option>\n\n##layoutOption##\n<option value=\"__classes__\">__name__</option>\n\n##picUploadStyles##\n.about-to-drop {\n\tposition: relative;\n\toutline: dashed 1px #66AFE9;\n}\n\n.about-to-drop:before {\n\tcontent: '';\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground-color: #66AFE9;\n\topacity: .4;\n}\n\n.about-to-drop:after {\n\tcontent: 'Drop File Here';\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 0;\n\tright: 0;\n\tcolor: #66AFE9;\n\tfont-weight: 600;\n\ttext-align: center;\n\tmargin-top: -10px;\n\tfont-size: 20px;\n}\n\n\n.pic-upload-options .img-holder img {\n\tmax-height: 200px;\n}\n\n.pic-upload-options label {\n\tdisplay: inline-block;\n\tmargin-top: 10px;\n\tpadding: 1px 0;\n\twidth: 100%;\n}\n\n.pic-upload-options input, .pic-upload-options select {\n\tbox-sizing: border-box;\n\twidth: 100%;\n}\n\n";
 
-},{}],18:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
+arguments[4][6][0].apply(exports,arguments)
+},{"dup":6}],22:[function(require,module,exports){
+arguments[4][9][0].apply(exports,arguments)
+},{"dup":9}],23:[function(require,module,exports){
+(function (process,global){
+
+var calculateRelativePath = require('./calculate-relative-path')
+
+if(typeof String.prototype.trim !== 'function') {
+  String.prototype.trim = function() {
+    return this.replace(/^\s+|\s+$/g, ''); 
+  }
+}
+
+function cloneArray(ar) {
+	var consumed = []
+	for(var i = 0; i < ar.length; i++) {
+		consumed.push(ar[i])
+	}
+	return consumed
+}
+
+var stackDepth = 0;
+function callCallback(callback) {
+	if(callback) {
+		if(stackDepth < 10) {
+			stackDepth++
+			return callback()
+		}
+		else {
+			stackDepth = 0;
+			if(process && process.nextTick) {
+				process.nextTick(callback)
+			}
+			else {
+				setTimeout(callback)
+			}
+		}
+	}
+}
+
+var Tripartite = function() {
+	this.templates = {
+		defaultTemplate: function(thedata) {
+			return '' + thedata;
+		}
+	}
+	
+	this.templates.defaultTemplate.write = function(thedata, stream, callback) {
+		stream.write('' + thedata)
+		callCallback(callback)
+	}
+	
+	this.constants = {
+		templateBoundary: '__',
+		templateNameBoundary: '##'
+	}
+	
+	// This object (if set) will receive the template functions parsed from a script
+	// I want to be able to call my templates as global functions, so I've set it
+	// to be the window object
+	this.secondaryTemplateFunctionObject = null
+	
+	this.loaders = []
+	
+	this.dataFunctions = {}
+}
+
+var t = Tripartite
+
+
+t.prototype.addTemplate = function(name, template) {
+	if(typeof template !== 'function') {
+		template = this.pt(template);
+	}
+	if(!template.write) {
+		var oldFun = template
+		template = function(cc, globalData) {
+			if(arguments.length > 1 && arguments[1] && arguments[1].write) {
+				template.write.apply(this, arguments)
+			}
+			else {
+				return oldFun(cc, globalData)
+			}
+		}
+		template.write = function(cc, stream, callback) {
+			stream.write(oldFun(cc))
+			callCallback(callback)
+		}
+	}
+	this.templates[name] = template;
+	template.templateMeta = template.templateMeta || {}
+	template.templateMeta.name = name
+	return template;
+};
+
+t.prototype.createBlank = function() {
+	return new Tripartite()
+}
+
+t.prototype.getTemplate = function(name) {
+	return this.templates[name]
+}
+
+t.prototype.loadTemplate = function(name, callback) {
+	if(name in this.templates) {
+		callback(this.templates[name])
+		
+	}
+	else {
+		var tri = this
+		var count = this.loaders.length
+		var done = false
+		var self = this
+		for(var i = 0; i < this.loaders.length; i++) {
+			this.loaders[i](name, function(template) {
+				if(done) {
+					return
+				}
+				count--
+				if(template) {
+					done = true
+					tri.addTemplate(name, template)
+					callback(tri.getTemplate(name))
+				}
+				else if(count == 0) {
+					self.templates[name] = null
+					callback(null)
+				}
+			})
+		}
+	}
+}
+
+t.prototype.parseTemplateScript = function(tx) {
+	var tks = this.tts(tx);
+	/* current template name */
+	var ctn = null;
+	for(var i = 0; i < tks.length; i++) {
+		var token = tks[i];
+		if(token.active) {
+			ctn = token.content;
+		}
+		else {
+			if(ctn) {
+				var template = this.addTemplate(ctn, this.stw(token.content));
+				if(this.secondaryTemplateFunctionObject) {
+					this.secondaryTemplateFunctionObject[ctn] = template;
+				}
+				ctn = null;
+			}
+		}
+	}
+}
+
+/* strip template whitespace */
+t.prototype.stw = function(txt) {
+	var i = txt.indexOf('\n');
+	if(i > -1 && txt.substring(0, i).trim() == '') {
+		txt = txt.substring(i + 1);
+	}
+	i = txt.lastIndexOf('\n');
+	if(i > -1 && txt.substring(i).trim() == '') {
+		txt = txt.substring(0, i);
+	}
+	return txt;
+};
+
+t.prototype.ActiveElement = function(/* the conditional */cd, data, hd, tripartite) {
+	/* assign the conditional expression */
+	this.ce = cd;
+	/* assign the data selector expression */
+	this.dse = data;
+	
+	this.tripartite = tripartite
+	
+	/* assign the hd expression */
+	if(hd) {
+		this.he = hd;
+	}
+	else {
+		this.he = 'defaultTemplate';
+	}
+	
+	/* evaluated data */
+	this.ed = null;
+};
+
+var ae = t.prototype.ActiveElement;
+
+/* SimpleTemplate */
+t.prototype.st = function(/* conditional expression */ cd, data, /* handling expression */ hd, tripartite, templateMeta) {
+	this.tripartite = tripartite
+	var el = new ae(cd, data, hd, tripartite);
+	el.templateMeta = templateMeta
+	var f = function(cc, globalData) {
+		if(arguments.length > 1 && arguments[1] && arguments[1].write) {
+			el.write.apply(el, arguments)
+		}
+		else {
+			return el.run(cc, globalData);
+		}
+	}
+	f.templateMeta = templateMeta
+	
+	f.write = function(cc, stream, callback, globalData) {
+		el.write(cc, stream, callback, globalData)
+	}
+	return f
+};
+
+
+ae.prototype.run = function(/* current context */cc, globalData) {
+	/* run template */
+	var rt = false;
+	/* evaluated data */
+	this.ed = this.edse(cc, globalData);
+	if(this.ce) {
+		rt = this.eic(cc, this.ce, globalData);
+	}
+	else {
+		if(this.ed instanceof Array) {
+			if(this.ed.length > 0) {
+				rt = true;
+			}
+		}
+		else {
+			if(this.ed) {
+				rt = true;
+			}
+			else if(!this.dse) {
+				rt = true
+				this.ed = cc
+			}
+		}
+	}
+	
+	var at = this.he;
+	if(at.charAt(0) == '$') {
+		at = this.eic(cc, at.substring(1), globalData);
+	}
+	if(!at) {
+		at = 'defaultTemplate';
+	}
+	
+	// resolve relative template paths
+	if(at.indexOf('./') == 0 || at.indexOf('../') == 0) {
+		at = calculateRelativePath(this.templateMeta.name, at)
+	}
+	
+	if(rt) {
+		if(this.ed instanceof Array) {
+			var r = '';
+			for(var i = 0; i < this.ed.length; i++) {
+				r += this.getTemplate(at)(this.ed[i], globalData || cc);
+			}
+			return r;
+		}
+		else {
+			return this.getTemplate(at)(this.ed, globalData || cc);
+		}
+	}
+	return '';
+};
+
+ae.prototype.write = function(/* current context */cc, stream, callback, globalData) {
+	/* run template */
+	var rt = false;
+	/* evaluated data */
+	this.ed = this.edse(cc, globalData);
+	if(this.ce) {
+		rt = this.eic(cc, this.ce, globalData);
+	}
+	else {
+		if(this.ed instanceof Array) {
+			if(this.ed.length > 0) {
+				rt = true;
+			}
+		}
+		else {
+			if(this.ed) {
+				rt = true;
+			}
+			else if(!this.dse) {
+				rt = true
+				this.ed = cc
+			}
+		}
+	}
+	
+	var at = this.he;
+	if(at.charAt(0) == '$') {
+		at = this.eic(cc, at.substring(1), globalData);
+	}
+	if(!at) {
+		at = 'defaultTemplate';
+	}
+
+	// resolve relative template paths
+	if(at.indexOf('./') == 0 || at.indexOf('../') == 0) {
+		at = calculateRelativePath(this.templateMeta.name, at)
+	}
+	
+	
+	var self = this
+	
+	
+	if(rt) {
+		this.tripartite.loadTemplate(at, function(template) {
+			var consumed
+			if(self.ed instanceof Array) {
+				consumed = cloneArray(self.ed)
+			}
+			else {
+				consumed = [self.ed]
+			}
+			
+			var procConsumed = function() {
+				if(template) {
+					template.write(consumed.shift(), stream, function() {
+						if(consumed.length > 0) {
+							procConsumed()
+						}
+						else if(callback) {
+							callCallback(callback)
+						}
+					}, globalData || cc)
+				}
+				else {
+					if(callback) {
+						var err = new Error('Cound not load template: ' + at)
+						err.templateName = at
+						err.type = 'missing template'
+						callback(err)
+					}
+					else {
+						console.error('Cound not load template: ' + at)
+					}
+				}
+			}
+			
+			if(consumed.length > 0) {
+				procConsumed()
+			}
+			else {
+				callCallback(callback)
+			}
+		})
+	}
+	else {
+		callCallback(callback)
+	}
+};
+
+ae.prototype.getTemplate = function(name) {
+	return this.tripartite.getTemplate(name)
+}
+
+/* evaluate data selector expression */
+ae.prototype.edse = function(cc, globalData) {
+	if(!this.dse) {
+		return null;
+	}
+	if(this.dse === '$this') {
+		return cc;
+	}
+	return this.eic(cc, this.dse, globalData);
+};
+
+/* evaluate in context */
+ae.prototype.eic = function(cc, ex, globalData) {
+	cc = cc || {};
+	return this.eicwt.call(cc, cc, ex, this.tripartite.dataFunctions, globalData);
+};
+
+/* Evaluate in context having been called so that this === cc (current context */
+ae.prototype.eicwt = function(cc, ex, dataFunctions, globalData) {
+	dataFunctions = dataFunctions || {}
+	globalData = globalData || cc || {}
+	
+	with ({
+		'$globals': globalData 
+	}) {
+		with (dataFunctions) {
+			with (cc) {
+				try {
+					return eval(ex);
+				} catch(e) {
+					return null;
+				}
+			}
+		}
+	}
+};
+
+/* parse template */
+t.prototype.pt = function(tx) {
+	var tks = this.tt(tx);
+	var pt = [];
+	var templateMeta = {}
+	
+	for(var i = 0; i < tks.length; i++) {
+		var tk = tks[i];
+		if(tk.active) {
+			pt.push(this.tap(tk.content, templateMeta));
+		}
+		else {
+			if(tk.content) {
+				pt.push(tk.content);
+			}
+		}
+	}
+	
+	var t = function(cc, globalData) {
+		if(arguments.length > 1 && arguments[1] && arguments[1].write) {
+			t.write.apply(t, arguments)
+		}
+		else {
+			var r = '';
+			for(var i = 0; i < pt.length; i++) {
+				if(typeof pt[i] === 'string') {
+					r += pt[i];
+				}
+				else {
+					r += pt[i](cc, globalData);
+				}
+			}
+			return r;
+		}
+	}
+	
+	t.templateMeta = templateMeta
+	
+	t.write = function(cc, stream, callback, globalData) {
+		var consumed = cloneArray(pt)
+		var lastError
+		
+		var procConsumed = function() {
+			var unit = consumed.shift()
+			if(typeof unit === 'string') {
+				stream.write(unit)
+				if(consumed.length > 0) {
+					procConsumed()
+				}
+				else if(callback) {
+					callCallback(callback)
+				}
+			}
+			else {
+				unit.write(cc, stream, function(err) {
+					if(err && stream.continueOnTripartiteError) {
+						lastError = err
+					}
+					
+					if(err && callback && !stream.continueOnTripartiteError) {
+						callback(err)
+					}
+					else if(consumed.length > 0) {
+						procConsumed()
+					}
+					else if(callback) {
+						if(lastError) {
+							callback(lastError)
+						}
+						else {
+							callCallback(callback)
+						}
+					}
+				}, globalData)
+			}
+		}
+		
+		if(consumed.length > 0) {
+			procConsumed()
+		}
+	}
+	
+	return t
+};
+
+/* tokenize active part */
+t.prototype.tokenizeActivePart = function(tx, templateMeta) {
+	var con = null;
+	var dat = null;
+	var han = null;
+	
+	/* condition index */
+	var ci = tx.indexOf('??');
+	if(ci > -1) {
+		con = tx.substring(0, ci);
+		ci += 2;
+	}
+	else {
+		ci = 0;
+	}
+	
+	/* handler index */
+	var hi = tx.indexOf('::');
+	if(hi > -1) {
+		dat = tx.substring(ci, hi);
+		han = tx.substring(hi + 2);
+	}
+	else {
+		dat = tx.substring(ci);
+	}
+	return new this.st(con, dat, han, this, templateMeta);
+}
+
+t.prototype.tap = t.prototype.tokenizeActivePart
+
+/* tokenize template */
+t.prototype.tokenizeTemplate = function(tx) {
+	return this.taib(tx, this.constants.templateBoundary);
+}
+
+t.prototype.tt = t.prototype.tokenizeTemplate
+
+/** tokenize template script */
+t.prototype.tts = function(tx) {
+	return this.taib(tx, this.constants.templateNameBoundary);
+}
+
+/* tokenize active and inactive blocks */
+t.prototype.taib = function(tx, /*Active Region Boundary */ bnd) {
+	/* whole length */
+	var l = tx.length;
+	
+	/* current position */
+	var p = 0;
+	
+	/* are we in an active region */
+	var act = false;
+	
+	var tks = [];
+	
+	while(p < l) {
+		var i = tx.indexOf(bnd, p);
+		if(i == -1) {
+			i = l;
+		}
+		var tk = { active: act, content: tx.substring(p, i)};
+		tks.push(tk);
+		p = i + 2;
+		act = !act;
+	}
+	
+	return tks;
+}
+
+var tripartiteInstance = new Tripartite()
+
+if(typeof window != 'undefined') {
+	tripartiteInstance.secondaryTemplateFunctionObject = window
+}
+
+function addCallbackToPromise(promise, callback) {
+    if(callback) {
+        promise = promise.then((obj) => {
+            callback(null, obj)
+        }).catch((err) => {
+            callback(err)
+        })
+    }
+
+    return promise
+}
+          
+
+if(module) {
+	module.exports = tripartiteInstance
+}
+else {
+	window.Tripartite = tripartiteInstance
+}
+
+if(global) {
+	if(!global.Tripartite) {
+		global.Tripartite = Tripartite
+	}
+	if(!global.tripartite) {
+		global.tripartite = tripartiteInstance
+	}
+}
+
+
+}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./calculate-relative-path":22,"_process":8}],24:[function(require,module,exports){
 var tri = require("tripartite"); var t = "<label>\n\t__label__\n\t<textarea name=\"__name__\" id=\"__id__\" rows=\"5\" >__value__<\/textarea>\n<\/label>"; 
 module.exports = tri.addTemplate("webhandle-page-editor/textarea-template", t); 
-},{"tripartite":9}]},{},[1]);
+},{"tripartite":23}]},{},[1]);

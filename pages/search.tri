@@ -1,0 +1,16 @@
+__::start__
+
+<div class="page ">
+	<div class="container-wrapper">
+		<div class="container">
+			<h1>Search Results</h1>
+			<h2>Searching for: __searchTerm__</h2>
+			<p>
+				__results::search-result__
+			</p>
+		</div>
+	</div>
+	__::footer__
+</div>
+
+__::end__
