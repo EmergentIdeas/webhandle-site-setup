@@ -1,0 +1,12 @@
+__::app_pre__
+	<section class="page">
+		<h1>Special Operations</h1>
+		<form method="post" action="/admin/delete-all-products" enctype="multipart/form-data">
+			<button type="submit">Delete All Products</button>
+		</form>
+		<br/>
+		<p>
+			<a href="/admin/tax-statement">Tax Statements</a>
+		</p>
+	</section>
+__::app_post__

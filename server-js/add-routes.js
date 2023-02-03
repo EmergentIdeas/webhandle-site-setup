@@ -7,6 +7,7 @@ const express = require('express');
 // const ConfigurationDreck = require('dreck/configuration-dreck')
 
 const filog = require('filter-log')
+const restrictAdminDirectory = require('./restrict-admin-directory')
 let log
 /*
 const calendarInit = require('webhandle-calendar/handles/webhandle-calendar-admin')
@@ -15,6 +16,7 @@ const sortEvents = require('webhandle-calendar/services/event-sort')
 const peopleGroupsIntegrator = require('@dankolz/ei-people-groups-1/server-js/webhandle-people-groups-integrator')
 const jobsIntegrator = require('@dankolz/webhandle-jobs/server-js/webhandle-jobs-integrator')
 const slideIntegrator = require('ei-slideshow-1/server-js/webhandle-slideshow-integrator')
+const restrictInternalDirectory = require('./restrict-internal-directory')
 */
 
 module.exports = function(app) {
@@ -44,6 +46,7 @@ module.exports = function(app) {
 	// add a couple javascript based tripartite templates. More a placeholder
 	// for project specific templates than it is a useful library.
 	require('./add-templates.js')()
+	restrictAdminDirectory()
 
 	// app.use(require('./routes/contact-forms'))
 

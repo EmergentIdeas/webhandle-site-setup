@@ -5,7 +5,7 @@ __::app-start__
 	<a href="/">Site</a>
 	<a href="/logout">Logout</a>
 </div>
-<div class="conatiner app-page">
+<div class="container app-page">
 	__flashMessages::flash-message__
 </div>
 <div class="container app-page">

@@ -7,6 +7,15 @@ var UploadableImage = require('ei-pic-browser/uploadable-image')
 window.CKEDITOR_BASEPATH = '/'
 require('ckeditor')
 
+let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
+tri.templates['escAttr'] = (val) => {
+	if (val && typeof val == 'string') {
+		return escapeAttributeValue(val, true)
+	}
+	return val
+}
+
+
 // custom config
 // CKEDITOR.config.customConfig = '/ck-textarea-config.js'
 

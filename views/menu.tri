@@ -24,5 +24,11 @@ __flashMessages::flash-message__
 				<li><a href="/slideshow"><h3>Slides</h3><p>Configure slideshows for your pages.</p></a></li>
 			</ul>
 		</div>
+		<div class="main-menu-block">
+			<h2>Advanced</h2>
+			<ul class="main-menu">
+				<li><a href="/admin/special-operations"><h3>Special Operations</h3><p>Odd and dangerous managment ends</p></a></li>
+			</ul>
+		</div>
 	</section>
 __::app_post__
