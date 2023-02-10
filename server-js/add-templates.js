@@ -19,7 +19,7 @@ let loadTemplates = function() {
 		return moment(data).format('MMMM Do, YYYY h:mm a')
 	}
 	let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
-	tri.templates['escAttr'] = (val) => {
+	templates['escAttr'] = (val) => {
 		if (val && typeof val == 'string') {
 			return escapeAttributeValue(val, true)
 		}
@@ -54,7 +54,6 @@ let loadTemplates = function() {
 		else {
 			return '__'
 		}
-		return moment(data).format('MMMM Do YYYY, h:mm:ss a')
 	}
 	templates['humanDate'] = (data) => {
 		return moment(data).format('MMMM Do YYYY, h:mm:ss a')
