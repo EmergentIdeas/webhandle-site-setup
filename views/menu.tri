@@ -4,7 +4,8 @@ __::app_pre__
 		<div class="main-menu-block">
 			<h2>Basics</h2>
 			<ul class="main-menu">
-				<li><a href="/user"><h3>Users</h3><p>Change who can access the administration tools.</p></a></li>
+				<li><a href="/admin/user"><h3>Users</h3><p>Change who can access the administration tools.</p></a></li>
+				<li><a href="/admin/group"><h3>Groups</h3><p>Change how users can be grouped.</p></a></li>
 				<li><a href="/webhandle-page-editor/admin/page-editor/create-page"><h3>Create New Page</h3><p>Add pages to the website.</p></a></li>
 				<li><a href="/webhandle-page-editor/admin/page-editor/menu-editor"><h3>Menu Editor</h3><p>Change the main navigation.</p></a></li>
 				<li><a href="/webhandle-page-editor/upload-files"><h3>Upload Files</h3><p>Browse and Upload files</p></a></li>

@@ -8,6 +8,15 @@ var UploadableImage = require('ei-pic-browser/uploadable-image')
 window.CKEDITOR_BASEPATH = '/'
 require('ckeditor')
 
+let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
+tri.templates['escAttr'] = (val) => {
+	if (val && typeof val == 'string') {
+		return escapeAttributeValue(val, true)
+	}
+	return val
+}
+
+
 // custom config
 // CKEDITOR.config.customConfig = '/ck-textarea-config.js'
 
@@ -26,7 +35,7 @@ require('ei-slideshow-1/client-js/slideshow-client')
 require('../node_modules/@dankolz/webhandle-news/client-js/app.js')
 */
 
-},{"./pages":2,"ckeditor":7,"ei-pic-browser/uploadable-image":28,"jquery":35,"tripartite":68,"webhandle-page-editor/app-client":72}],2:[function(require,module,exports){
+},{"../server-js/utils/escape-attribute-value":91,"./pages":2,"ckeditor":7,"ei-pic-browser/uploadable-image":28,"jquery":35,"tripartite":68,"webhandle-page-editor/app-client":72}],2:[function(require,module,exports){
 window.require = require
 window.jQuery = window.$ = require('jquery')
 
@@ -379,6 +388,7 @@ exports.stringifyObject = function (op, sep, cl, indent) {
 
 
 }).call(this,require("buffer").Buffer)
+
 },{"buffer":6,"jsonparse":36,"through":65}],4:[function(require,module,exports){
 'use strict'
 
@@ -3661,6 +3671,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
+
 },{"../../is-buffer/index.js":33}],9:[function(require,module,exports){
 // https://d3js.org/d3-color/ v1.4.1 Copyright 2020 Mike Bostock
 (function (global, factory) {
@@ -30874,6 +30885,7 @@ Parser.C = C;
 module.exports = Parser;
 
 }).call(this,require("buffer").Buffer)
+
 },{"buffer":6}],37:[function(require,module,exports){
 var d3 = require('d3-selection')
   , DnD = require('./lib/dnd')
@@ -32856,6 +32868,7 @@ Dnd.prototype._end = function (d, node) {
 module.exports = Dnd
 
 }).call(this,require('_process'))
+
 },{"./update":45,"_process":48,"d3-selection":14}],40:[function(require,module,exports){
 var d3 = require('d3-selection')
   , partialRight = require('./partial-right')
@@ -50195,6 +50208,7 @@ module.exports = function (tree) {
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{}],47:[function(require,module,exports){
 (function (process){
 'use strict';
@@ -50243,6 +50257,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 
 
 }).call(this,require('_process'))
+
 },{"_process":48}],48:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
@@ -51634,6 +51649,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./_stream_duplex":50,"./internal/streams/BufferList":55,"./internal/streams/destroy":56,"./internal/streams/stream":57,"_process":48,"core-util-is":8,"events":30,"inherits":32,"isarray":34,"process-nextick-args":47,"safe-buffer":62,"string_decoder/":64,"util":5}],53:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -52539,6 +52555,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
+
 },{"./_stream_duplex":50,"./internal/streams/destroy":56,"./internal/streams/stream":57,"_process":48,"core-util-is":8,"inherits":32,"process-nextick-args":47,"safe-buffer":62,"timers":66,"util-deprecate":69}],55:[function(require,module,exports){
 'use strict';
 
@@ -53317,6 +53334,7 @@ function through (write, end, opts) {
 
 
 }).call(this,require('_process'))
+
 },{"_process":48,"stream":63}],66:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
@@ -53396,6 +53414,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
+
 },{"process/browser.js":48,"timers":66}],67:[function(require,module,exports){
 var calculateRelativePath = function(parentPath, currentPath) {
 	if(!parentPath) {
@@ -54000,6 +54019,7 @@ if(global) {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./calculate-relative-path":67}],69:[function(require,module,exports){
 (function (global){
 
@@ -54071,6 +54091,7 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{}],70:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
@@ -54668,6 +54689,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./support/isBuffer":70,"_process":48,"inherits":32}],72:[function(require,module,exports){
 
 var menuMaker = require('./client-lib/page-integration')
@@ -56256,4 +56278,26 @@ if(global) {
 
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./calculate-relative-path":89,"_process":48}]},{},[1]);
+
+},{"./calculate-relative-path":89,"_process":48}],91:[function(require,module,exports){
+
+function escapeAttributeValue(s, preserveCR) {
+	preserveCR = preserveCR ? '&#13;' : '\n';
+	return ('' + s) /* Forces the conversion to string. */
+		.replace(/&/g, '&amp;') /* This MUST be the 1st replacement. */
+		.replace(/'/g, '&apos;') /* The 4 other predefined entities, required. */
+		.replace(/"/g, '&quot;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		/*
+		You may add other replacements here for HTML only 
+		(but it's not necessary).
+		Or for XML, only if the named entities are defined in its DTD.
+		*/
+		.replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
+		.replace(/[\r\n]/g, preserveCR)
+}
+
+module.exports = escapeAttributeValue
+},{}]},{},[1])
+//# sourceMappingURL=app.js.map

@@ -11590,4 +11590,6 @@ if(global) {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./calculate-relative-path":3}]},{},[1]);
+
+},{"./calculate-relative-path":3}]},{},[1])
+//# sourceMappingURL=pages.js.map

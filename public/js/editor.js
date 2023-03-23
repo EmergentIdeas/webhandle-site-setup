@@ -24137,6 +24137,7 @@ if(global) {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./calculate-relative-path":9}],11:[function(require,module,exports){
 (function (global){
 //     Underscore.js 1.9.1
@@ -25833,6 +25834,7 @@ if(global) {
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{}],12:[function(require,module,exports){
 
 
@@ -27141,7 +27143,9 @@ if(global) {
 
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./calculate-relative-path":22,"_process":8}],24:[function(require,module,exports){
 var tri = require("tripartite"); var t = "<label>\n\t__label__\n\t<textarea name=\"__name__\" id=\"__id__\" rows=\"5\" >__value__<\/textarea>\n<\/label>"; 
 module.exports = tri.addTemplate("webhandle-page-editor/textarea-template", t); 
-},{"tripartite":23}]},{},[1]);
+},{"tripartite":23}]},{},[1])
+//# sourceMappingURL=editor.js.map

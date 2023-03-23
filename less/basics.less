@@ -40,6 +40,14 @@
 		padding-bottom: @ratio / 2 * 100%;
 		vertical-align: middle;
 	}
+	@supports (aspect-ratio: @ratio) {
+		aspect-ratio: 1 / @ratio;
+	}
+	@supports (aspect-ratio: @ratio) {
+		&:before {
+			display: none;
+		}
+	}
 }
 /*
 .ei-grid {
@@ -91,10 +99,6 @@
 }
 
 .desktop(@rules) {
-	.ie6, .ie7, .ie8 {
-		@rules();
-	}
-	
 	@media(min-width: @container-width) {
 		@rules();
 	}
@@ -107,10 +111,6 @@
 }
 
 .tablet(@rules) {
-	.ie6, ie7, ie8 {
-		@rules();
-	}
-	
 	@media(min-width: @tablet-width) {
 		@rules();
 	}

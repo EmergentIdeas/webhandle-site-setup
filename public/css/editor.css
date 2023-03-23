@@ -1284,13 +1284,6 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
-.container .ie6,
-.container .ie7,
-.container .ie8 {
-  max-width: 1100px;
-  padding-left: 0;
-  padding-right: 0;
-}
 @media (min-width: 1100px) {
   .container {
     max-width: 1100px;
@@ -1341,11 +1334,6 @@ body {
   background-color: black;
   padding: 20px;
 }
-.std-header .ie6,
-.std-header ie7,
-.std-header ie8 {
-  padding: 20px 58px 20px 58px;
-}
 @media (min-width: 900px) {
   .std-header {
     padding: 20px 58px 20px 58px;
@@ -1375,41 +1363,6 @@ body {
   padding-right: 10px;
   padding-bottom: 6px;
   padding-top: 2px;
-}
-.std-header .ie6,
-.std-header .ie7,
-.std-header .ie8 {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-.std-header .ie6 nav,
-.std-header .ie7 nav,
-.std-header .ie8 nav {
-  justify-self: right;
-  align-self: center;
-  text-align: right;
-}
-.std-header .ie6 .menu,
-.std-header .ie7 .menu,
-.std-header .ie8 .menu {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-.std-header .ie6 .menu li,
-.std-header .ie7 .menu li,
-.std-header .ie8 .menu li {
-  display: inline-block;
-}
-.std-header .ie6 .menu li.current,
-.std-header .ie7 .menu li.current,
-.std-header .ie8 .menu li.current {
-  border-bottom: solid 2px white;
-}
-.std-header .ie6 .tribar,
-.std-header .ie7 .tribar,
-.std-header .ie8 .tribar {
-  display: none;
 }
 @media (min-width: 1100px) {
   .std-header {
@@ -1501,11 +1454,6 @@ header {
   background-color: black;
   padding: 20px;
 }
-header .ie6,
-header ie7,
-header ie8 {
-  padding: 20px 58px 20px 58px;
-}
 @media (min-width: 900px) {
   header {
     padding: 20px 58px 20px 58px;
@@ -1535,41 +1483,6 @@ header .menu li a {
   padding-right: 10px;
   padding-bottom: 6px;
   padding-top: 2px;
-}
-header .ie6,
-header .ie7,
-header .ie8 {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-header .ie6 nav,
-header .ie7 nav,
-header .ie8 nav {
-  justify-self: right;
-  align-self: center;
-  text-align: right;
-}
-header .ie6 .menu,
-header .ie7 .menu,
-header .ie8 .menu {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-header .ie6 .menu li,
-header .ie7 .menu li,
-header .ie8 .menu li {
-  display: inline-block;
-}
-header .ie6 .menu li.current,
-header .ie7 .menu li.current,
-header .ie8 .menu li.current {
-  border-bottom: solid 2px white;
-}
-header .ie6 .tribar,
-header .ie7 .tribar,
-header .ie8 .tribar {
-  display: none;
 }
 @media (min-width: 1100px) {
   header {
@@ -1659,3 +1572,4 @@ header .ie8 .tribar {
 .webhandle-page-editor-tools {
   z-index: 100;
 }
+/*# sourceMappingURL=editor.css.map */
