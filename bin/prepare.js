@@ -21,11 +21,12 @@ mkdir.on('close', function(code) {
 	spawn('cp', ['-rn', path.resolve(packageDir, 'page-templates'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'debug.config.js'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'server.config.js'), path.resolve(cwd)])
+	spawn('cp', ['-rn', path.resolve(packageDir, 'prod.config.js'), path.resolve(cwd)])
 	spawn('cp', ['-rn', path.resolve(packageDir, 'web-server.js'), path.resolve(cwd)])
 	
 	let buildPackage = JSON.parse(fs.readFileSync(path.resolve(packageDir, 'package.json')).toString())
 	let destPackage = JSON.parse(fs.readFileSync(path.resolve(cwd, 'package.json')).toString())
+	let destPackageName = destPackage.name
 	
 	if(!destPackage.devDependencies) {
 		destPackage.devDependencies = {}
@@ -35,6 +36,9 @@ mkdir.on('close', function(code) {
 	}
 	if(!destPackage.scripts) {
 		destPackage.scripts = {}
+	}
+	if(!destPackage.browserify) {
+		destPackage.browserify = {}
 	}
 	
 	for(let key in buildPackage.devDependencies) {
@@ -47,11 +51,19 @@ mkdir.on('close', function(code) {
 			destPackage.dependencies[key] = buildPackage.dependencies[key]
 		}
 	}
+	for(let key in buildPackage.browserify) {
+		if(!destPackage.browserify[key]) {
+			destPackage.browserify[key] = buildPackage.browserify[key]
+		}
+	}
 	
 	for(let key in buildPackage.scripts) {
 		destPackage.scripts[key] = buildPackage.scripts[key]
 	}
 	fs.writeFileSync(path.resolve(cwd, 'package.json'), JSON.stringify(destPackage, null, "\t"))
+	spawn('sed', ['-i', `s/change-me/${destPackageName}/g`, 'dev.config.js'])
+	spawn('sed', ['-i', `s/change-me/${destPackageName}/g`, 'debug.config.js'])
+	spawn('sed', ['-i', `s/change-me/${destPackageName}/g`, 'prod.config.js'])
 	
 	const npmInstall = spawn('npm', ['install'])
 	npmInstall.on('close', function(code) {
