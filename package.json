@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "client-js-build": "npm run client-js-pages-build ; npm run client-js-editor-build ; npm run client-js-app-build",
     "client-js-pages-build": "npx browserify client-js/pages.js --debug | npx exorcist public/js/pages.js.map > public/js/pages.js",
     "client-js-editor-build": "npx browserify client-js/editor.js --debug | npx exorcist public/js/editor.js.map > public/js/editor.js",
-    "client-js-app-build": "npx browserify client-js/app.js --debug | npx exorcist public/js/app.js.map > public/js/app.js",
+    "client-js-app-build": "npx browserify -p esmify client-js/app.js --debug | npx exorcist public/js/app.js.map > public/js/app.js",
     "dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
     "dev-client-js-watch": "onchange 'client-js/**/*.js' -- npm run client-js-build",
     "dev-server-js-watch": "onchange 'server-js/**/*.js' -- pm2 restart $npm_package_name-web",
@@ -57,7 +57,7 @@
     "webhandle-emailer": "^1.0.10",
     "webhandle-indexer": "^1.0.2",
     "webhandle-menus-1": "^1.0.4",
-    "webhandle-page-editor": "^1.0.19",
+    "webhandle-page-editor": "^1.0.24",
     "webhandle-page-server": "^1.0.11",
     "webhandle-redirector": "^1.0.0",
     "webhandle-users": "^1.0.6"
@@ -66,6 +66,7 @@
     "@dankolz/webp-detection": "^1.0.1",
     "browserify": "^14.4.0",
     "chai": "^4.3.4",
+    "esmify": "^2.1.1",
     "exorcist": "^2.0.0",
     "jsdoc": "^3.6.11",
     "less": "^3.10.3",

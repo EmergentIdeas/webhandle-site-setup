@@ -5,7 +5,7 @@ require('./pages')
 var UploadableImage = require('ei-pic-browser/uploadable-image')
 
 window.CKEDITOR_BASEPATH = '/'
-require('ckeditor')
+require('ckeditor4')
 
 let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
 tri.templates['escAttr'] = (val) => {
