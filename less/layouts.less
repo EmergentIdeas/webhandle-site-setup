@@ -51,13 +51,35 @@
 			display: inline-block;
 			margin: 0;
 			padding: 0;
-			li {
+			& > li {
 				display: inline-block;
 				a {
 				}
 				
 				&.current {
 					border-bottom: solid 2px white;
+				}
+				ul {
+					position: absolute;
+					top: 100%;
+					left: -10000px;
+					opacity: 0;
+					transition: opacity .3s;
+					background-color: black;
+					color: white;
+					text-align: left;
+					list-style: none;
+					font-size: 70%;
+					width: 300px;
+
+				}
+
+				&:hover {
+					ul {
+						left: auto;
+						right: 0;
+						opacity: 1;
+					}
 				}
 				
 			}
