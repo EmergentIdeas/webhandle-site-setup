@@ -5,31 +5,45 @@ require('./pages')
 var UploadableImage = require('ei-pic-browser/uploadable-image')
 
 window.CKEDITOR_BASEPATH = '/'
-require('ckeditor4')
 
-let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
-tri.templates['escAttr'] = (val) => {
-	if (val && typeof val == 'string') {
-		return escapeAttributeValue(val, true)
+async function appSetup() {
+	let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
+	tri.templates['escAttr'] = (val) => {
+		if (val && typeof val == 'string') {
+			return escapeAttributeValue(val, true)
+		}
+		return val
 	}
-	return val
+
+
+	// custom config
+	// CKEDITOR.config.customConfig = '/ck-textarea-config.js'
+
+	$('.app-page input[type=text].picture-input-field').each(function() {
+			new UploadableImage(this)
+	})
+
+
+	require('webhandle-page-editor/app-client')
+	/*
+	require('../node_modules/@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
+	require('../node_modules/@dankolz/sponsors/client-js/sponsors.js')
+	require('../node_modules/webhandle-calendar/client-js/calendar-app-client.js')
+	require('../node_modules/@dankolz/webhandle-jobs/client-js/jobs-client.js')
+	require('ei-slideshow-1/client-js/slideshow-client')
+	require('../node_modules/@dankolz/webhandle-news/client-js/app.js')
+	*/
 }
 
+if(window.CKEDITOR) {
+	appSetup()
+}
+else {
+	let ckscript = document.createElement('script');
+	ckscript.setAttribute('src','/ckeditor.js');
+	ckscript.onload = function() {
+		appSetup()
+	}
+	document.head.appendChild(ckscript)
+}
 
-// custom config
-// CKEDITOR.config.customConfig = '/ck-textarea-config.js'
-
-$('.app-page input[type=text].picture-input-field').each(function() {
-        new UploadableImage(this)
-})
-
-
-require('webhandle-page-editor/app-client')
-/*
-require('../node_modules/@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
-require('../node_modules/@dankolz/sponsors/client-js/sponsors.js')
-require('../node_modules/webhandle-calendar/client-js/calendar-app-client.js')
-require('../node_modules/@dankolz/webhandle-jobs/client-js/jobs-client.js')
-require('ei-slideshow-1/client-js/slideshow-client')
-require('../node_modules/@dankolz/webhandle-news/client-js/app.js')
-*/
