@@ -12,14 +12,16 @@ module.exports = {
                 PORT: 3000,
 				trackerSecretKey: 'CHANGETHISTRACKERSECRETKEY'
 				, initialAdminPassword: 'changethisadminpassword'
-				// , dbs: [
-                //    {
-                //        "type": "mongodb",
-                //        "dbName": "changethisdbname",
-                //        "url": "mongodb://localhost:27017/",
-                //        "collectionNames": [ "webhandleusers_users" ]
-                //    }
-                // ]
+				/*
+				, dbs: [
+                   {
+                       "type": "mongodb",
+                       "dbName": "changethisdbname",
+                       "url": "mongodb://localhost:27017/",
+                       "collectionNames": [ "webhandleusers_users" ]
+                   }
+                ]
+				*/
             }
         }
     ]

@@ -13,40 +13,43 @@ module.exports = {
 				NODE_ENV: 'development',
 				trackerSecretKey: 'CHANGETHISTRACKERSECRETKEY'
 				, initialAdminPassword: 'changethisadminpassword'
-				// , dbs: [
-                //    {
-                //        "type": "mongodb",
-                //        "dbName": "changethisdbname",
-                //        "url": "mongodb://localhost:27017/",
-                //        "collectionNames": [ "webhandleusers_users" ]
-                //    }
-                // ]
+				/*
+				, dbs: [
+                   {
+                       "type": "mongodb",
+                       "dbName": "changethisdbname",
+                       "url": "mongodb://localhost:27017/",
+                       "collectionNames": [ "webhandleusers_users" ]
+                   }
+                ]
+				*/
 				
-				
-				
-
-				// , webhandleEmail: {
-                //     transport: {
-                //         service: "gmail",
-                //         auth: {
-                //             user: "username",
-                //             pass: "pass"
-                //         }
-                //     },
-                //     destDefault: "dan@example.com"
-				// }
-				// , webhandleEmail: {
-                //     transport: {
-                //         host: "smtp.office365.com",
-                //         port: 587,
-                //         secure: false, // true for 465, false for other ports
-                //         auth: {
-                //             user: 'username',
-                //             pass: 'pass'
-                //         }
-                //     },
-                //     destDefault: "dan@example.com"
-                // }
+				/*
+				, webhandleEmail: {
+                    transport: {
+                        service: "gmail",
+                        auth: {
+                            user: "username",
+                            pass: "pass"
+                        }
+                    },
+                    destDefault: "dan@example.com"
+				}
+				*/
+				/*
+				, webhandleEmail: {
+                    transport: {
+                        host: "smtp.office365.com",
+                        port: 587,
+                        secure: false, // true for 465, false for other ports
+                        auth: {
+                            user: 'username',
+                            pass: 'pass'
+                        }
+                    },
+                    destDefault: "dan@example.com"
+                }
+				*/
 
 
             }

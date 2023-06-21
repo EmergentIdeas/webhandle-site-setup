@@ -4,7 +4,7 @@ var tri = require('tripartite')
 require('./pages')
 var UploadableImage = require('ei-pic-browser/uploadable-image')
 
-window.CKEDITOR_BASEPATH = '/ckeditor'
+window.CKEDITOR_BASEPATH = '/ckeditor/'
 
 async function appSetup() {
 	let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
@@ -17,7 +17,7 @@ async function appSetup() {
 
 
 	// custom config
-	// CKEDITOR.config.customConfig = '/ck-textarea-config.js'
+    CKEDITOR.config.customConfig = '/webhandle-page-editor/std-config.js' 
 
 	$('.app-page input[type=text].picture-input-field').each(function() {
 			new UploadableImage(this)
