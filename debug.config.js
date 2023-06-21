@@ -12,7 +12,16 @@ module.exports = {
             "env": {
                 PORT: 3000,
 				NODE_ENV: 'development',
-				trackerSecretKey: 'CHANGE THIS: I believe that at the end of the century the use of words and general educated opinion will have altered so much that one will be able to speak of machines thinking without expecting to be contradicted.'
+				trackerSecretKey: 'CHANGETHISTRACKERSECRETKEY'
+				, initialAdminPassword: 'changethisadminpassword'
+				// , dbs: [
+                //    {
+                //        "type": "mongodb",
+                //        "dbName": "changethisdbname",
+                //        "url": "mongodb://localhost:27017/",
+                //        "collectionNames": [ "webhandleusers_users" ]
+                //    }
+                // ]
             }
         },
         {

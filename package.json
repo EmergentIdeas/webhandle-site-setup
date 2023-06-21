@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "@dankolz/ei-css-grid": "^1.0.0",
     "@dankolz/ei-people-groups-1": "^1.0.2",
     "@dankolz/social-head-attributes": "^1.0.0",
+    "@dankolz/sponsors": "^1.0.1",
     "@dankolz/webhandle-jobs": "^1.0.1",
     "@dankolz/webhandle-news": "^1.0.3",
     "dreck": "^1.0.17",
@@ -52,12 +53,12 @@
     "moment": "^2.24.0",
     "shiner": "^1.0.7",
     "swipe-listener": "^1.3.0",
-    "webhandle": "^1.0.26",
+    "webhandle": "^1.0.27",
     "webhandle-calendar": "^1.0.13",
     "webhandle-emailer": "^1.0.10",
     "webhandle-indexer": "^1.0.2",
     "webhandle-menus-1": "^1.0.4",
-    "webhandle-page-editor": "^1.0.27",
+    "webhandle-page-editor": "^1.0.28",
     "webhandle-page-server": "^1.0.11",
     "webhandle-redirector": "^1.0.0",
     "webhandle-users": "^1.0.6"

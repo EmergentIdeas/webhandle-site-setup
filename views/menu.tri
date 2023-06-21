@@ -8,7 +8,7 @@ __::app_pre__
 				<li><a href="/admin/group"><h3>Groups</h3><p>Change how users can be grouped.</p></a></li>
 				<li><a href="/webhandle-page-editor/admin/page-editor/create-page"><h3>Create New Page</h3><p>Add pages to the website.</p></a></li>
 				<li><a href="/webhandle-page-editor/admin/page-editor/menu-editor"><h3>Menu Editor</h3><p>Change the main navigation.</p></a></li>
-				<li><a href="/webhandle-page-editor/upload-files"><h3>Upload Files</h3><p>Browse and Upload files</p></a></li>
+				<li><a href="/webhandle-page-editor/upload-files"><h3>Manage Files</h3><p>Browse and Upload files</p></a></li>
 				<li><a href="/admin/config/configuration"><h3>Configuration</h3><p>General parameters like contact info<p></a></li>
 				<li><a href="/admin/contact-messages"><h3>Contact Messages</h3><p>View all contacts from the site</p></a></li>
 			</ul>

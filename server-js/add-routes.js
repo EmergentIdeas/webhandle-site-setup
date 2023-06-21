@@ -1,6 +1,6 @@
-// const webhandle = require('webhandle')
+const webhandle = require('webhandle')
 // const commingle = require('commingle')
-// const usersSetup = require('webhandle-users/integrate-with-webhandle')
+const usersSetup = require('webhandle-users/integrate-with-webhandle')
 const path = require('path')
 const express = require('express');
 
@@ -25,23 +25,23 @@ module.exports = function(app) {
 	log = filog(dbName)
 	//	app.use('/', require('./routes/index'));
 
-	/*
-	let preSecuredRouter = express.Router()
-	let securedRouter = require('webhandle-users/utils/allow-group')(
-		['administrators'],
-		preSecuredRouter
-	)
-	webhandle.routers.primary.use(securedRouter)
+	if(firstDb && process.env.initialAdminPassword) {
+		let preSecuredRouter = express.Router()
+		let securedRouter = require('webhandle-users/utils/allow-group')(
+			['administrators'],
+			preSecuredRouter
+		)
+		webhandle.routers.primary.use(securedRouter)
 
-	// Add the user auth
-	require('./enable-users')(dbName, defaultAdminPassword)
-	
-	// Custom menu
-	require('./enable-menu')()
+		// Add the user auth
+		require('./enable-users')(dbName, process.env.initialAdminPassword)
+		
+		// Custom menu
+		require('./enable-menu')()
 
-	// Add the page editor
-	require('./enable-page-editor')()
-	*/
+		// Add the page editor
+		require('./enable-page-editor')()
+	}
 
 	// add a couple javascript based tripartite templates. More a placeholder
 	// for project specific templates than it is a useful library.

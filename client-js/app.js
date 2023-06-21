@@ -4,7 +4,7 @@ var tri = require('tripartite')
 require('./pages')
 var UploadableImage = require('ei-pic-browser/uploadable-image')
 
-window.CKEDITOR_BASEPATH = '/'
+window.CKEDITOR_BASEPATH = '/ckeditor'
 
 async function appSetup() {
 	let escapeAttributeValue = require('../server-js/utils/escape-attribute-value')
@@ -26,12 +26,12 @@ async function appSetup() {
 
 	require('webhandle-page-editor/app-client')
 	/*
-	require('../node_modules/@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
-	require('../node_modules/@dankolz/sponsors/client-js/sponsors.js')
-	require('../node_modules/webhandle-calendar/client-js/calendar-app-client.js')
-	require('../node_modules/@dankolz/webhandle-jobs/client-js/jobs-client.js')
+	require('@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
+	require('@dankolz/sponsors/client-js/sponsors.js')
+	require('webhandle-calendar/client-js/calendar-app-client.js')
+	require('@dankolz/webhandle-jobs/client-js/jobs-client.js')
 	require('ei-slideshow-1/client-js/slideshow-client')
-	require('../node_modules/@dankolz/webhandle-news/client-js/app.js')
+	require('@dankolz/webhandle-news/client-js/app.js')
 	*/
 }
 
@@ -40,7 +40,7 @@ if(window.CKEDITOR) {
 }
 else {
 	let ckscript = document.createElement('script');
-	ckscript.setAttribute('src','/ckeditor.js');
+	ckscript.setAttribute('src','/ckeditor/ckeditor.js');
 	ckscript.onload = function() {
 		appSetup()
 	}

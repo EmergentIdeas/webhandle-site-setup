@@ -4,6 +4,32 @@ const fs = require('fs')
 const { spawn } = require('child_process')
 const mkdir = spawn('mkdir', ['-p', 'public/css', 'public/js', 'public/img'])
 console.log('creating directories')
+
+const crypto = require('crypto')
+
+function noPunctuation(val) {
+    if (val) {
+        if(typeof val !== 'string') {
+            val = val.toString()
+        }
+        return val.toLowerCase().replace(/[^0-9a-z]/g, '')
+    }
+    return ''
+}
+
+let configFiles = ['dev.config.js', 'debug.config.js', 'prod.config.js']
+
+function changeConfigFile(searchString, replacementString, file) {
+	spawn('sed', ['-i', `s/${searchString}/${replacementString}/g`, file])
+}
+function changeConfigFiles(searchString, replacementString) {
+	for( let file of configFiles) {
+		changeConfigFile(searchString, replacementString, file)
+	}
+}
+
+
+
 mkdir.on('close', function(code) {
 	let packageDir = path.resolve(path.dirname(require.main.filename), '..')
 	let cwd = process.cwd()
@@ -61,9 +87,16 @@ mkdir.on('close', function(code) {
 		destPackage.scripts[key] = buildPackage.scripts[key]
 	}
 	fs.writeFileSync(path.resolve(cwd, 'package.json'), JSON.stringify(destPackage, null, "\t"))
-	spawn('sed', ['-i', `s/change-me/${destPackageName}/g`, 'dev.config.js'])
-	spawn('sed', ['-i', `s/change-me/${destPackageName}/g`, 'debug.config.js'])
-	spawn('sed', ['-i', `s/change-me/${destPackageName}/g`, 'prod.config.js'])
+	
+	let randomString = crypto.randomBytes(16).toString('hex');
+	let passwordString = crypto.randomBytes(8).toString('base64url');
+	let dbName = noPunctuation(destPackageName)
+
+	changeConfigFiles('change-me', destPackageName)
+	changeConfigFiles('CHANGETHISTRACKERSECRETKEY', randomString)
+	changeConfigFiles('changethisadminpassword', passwordString)
+	changeConfigFiles('changethisdbname', dbName)
+	
 	
 	const npmInstall = spawn('npm', ['install'])
 	npmInstall.on('close', function(code) {
