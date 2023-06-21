@@ -13,6 +13,18 @@ module.exports = {
 				NODE_ENV: 'development',
 				trackerSecretKey: 'CHANGETHISTRACKERSECRETKEY'
 				, initialAdminPassword: 'changethisadminpassword'
+				// , dbs: [
+                //    {
+                //        "type": "mongodb",
+                //        "dbName": "changethisdbname",
+                //        "url": "mongodb://localhost:27017/",
+                //        "collectionNames": [ "webhandleusers_users" ]
+                //    }
+                // ]
+				
+				
+				
+
 				// , webhandleEmail: {
                 //     transport: {
                 //         service: "gmail",
@@ -35,14 +47,6 @@ module.exports = {
                 //     },
                 //     destDefault: "dan@example.com"
                 // }
-				// , dbs: [
-                //    {
-                //        "type": "mongodb",
-                //        "dbName": "changethisdbname",
-                //        "url": "mongodb://localhost:27017/",
-                //        "collectionNames": [ "webhandleusers_users" ]
-                //    }
-                // ]
 
 
             }

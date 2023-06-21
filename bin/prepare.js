@@ -1,7 +1,8 @@
 #! /usr/bin/env node
 let path = require('path')
 const fs = require('fs')
-const { spawn } = require('child_process')
+const spawnSync = require('child_process').spawnSync
+const spawn = require('child_process').spawn
 const mkdir = spawn('mkdir', ['-p', 'public/css', 'public/js', 'public/img'])
 console.log('creating directories')
 
@@ -20,7 +21,7 @@ function noPunctuation(val) {
 let configFiles = ['dev.config.js', 'debug.config.js', 'prod.config.js']
 
 function changeConfigFile(searchString, replacementString, file) {
-	spawn('sed', ['-i', `s/${searchString}/${replacementString}/g`, file])
+	spawnSync('sed', ['-i', `s/${searchString}/${replacementString}/g`, file])
 }
 function changeConfigFiles(searchString, replacementString) {
 	for( let file of configFiles) {
@@ -35,20 +36,20 @@ mkdir.on('close', function(code) {
 	let cwd = process.cwd()
 	// console.log('package dir: ' + packageDir)
 	// console.log('cwd: ' + cwd)
-	spawn('cp', ['-rn', path.resolve(packageDir, 'client-js'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'server-js'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'less'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'views'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'menus'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'pages'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'build'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'test'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'utils'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'page-templates'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'debug.config.js'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'prod.config.js'), path.resolve(cwd)])
-	spawn('cp', ['-rn', path.resolve(packageDir, 'web-server.js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'client-js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'server-js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'less'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'views'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'menus'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'pages'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'build'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'test'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'utils'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'page-templates'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'debug.config.js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'prod.config.js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'web-server.js'), path.resolve(cwd)])
 	
 	let buildPackage = JSON.parse(fs.readFileSync(path.resolve(packageDir, 'package.json')).toString())
 	let destPackage = JSON.parse(fs.readFileSync(path.resolve(cwd, 'package.json')).toString())
