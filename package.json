@@ -15,6 +15,7 @@
     "client-js-pages-build": "npx browserify client-js/pages.js --debug | npx exorcist public/js/pages.js.map > public/js/pages.js",
     "client-js-editor-build": "npx browserify client-js/editor.js --debug | npx exorcist public/js/editor.js.map > public/js/editor.js",
     "client-js-app-build": "npx browserify -p esmify client-js/app.js --debug | npx exorcist public/js/app.js.map > public/js/app.js",
+	"client-js-app-webpack-build": "npx webpack --config app.webpack.js",
     "dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
     "dev-client-js-watch": "onchange 'client-js/**/*.js' -- npm run client-js-build",
     "dev-server-js-watch": "onchange 'server-js/**/*.js' -- pm2 restart $npm_package_name-web",

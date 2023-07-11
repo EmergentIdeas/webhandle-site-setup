@@ -19,7 +19,7 @@ if (total > 1) {
 	$('.shiner-show .slide').addClass('invisible').eq(0).removeClass('invisible').addClass('visible')
 	$('.shiner-show').addClass('transitions-on')
 
-
+	$('.shiner-show .dots').html('')
 	for(var i = 0; i < total; i++) {
 		$('.shiner-show .dots').append('<div class="dot">&nbsp;</div>')
 	}
