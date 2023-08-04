@@ -45,6 +45,7 @@ mkdir.on('close', function(code) {
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'build'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'test'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'utils'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'data'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'page-templates'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, '.vscode'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])

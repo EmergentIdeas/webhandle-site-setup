@@ -1,6 +1,6 @@
 const webhandle = require('webhandle')
 
-function enableDefaultPageTitle() {
+function enableDefaultPageTitle(dbName) {
 	webhandle.pageServer.preRun.push((req, res, next) => {
 		if(!res.locals.page) {
 			res.locals.page = {}

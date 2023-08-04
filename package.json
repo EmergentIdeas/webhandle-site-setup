@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
   "dependencies": {
     "@dankolz/ei-css-grid": "^1.0.0",
     "@dankolz/ei-people-groups-1": "^1.0.2",
+    "@dankolz/page-prerun-data-loader": "^1.0.0",
     "@dankolz/social-head-attributes": "^1.0.0",
     "@dankolz/sponsors": "^1.0.1",
     "@dankolz/webhandle-jobs": "^1.0.1",

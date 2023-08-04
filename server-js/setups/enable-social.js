@@ -1,4 +1,5 @@
 const webhandle = require('webhandle')
+const path = require('path')
 
 function enableSocial() {
     webhandle.routers.primary.use((req, res, next) => {

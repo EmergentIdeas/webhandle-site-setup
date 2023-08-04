@@ -8,7 +8,7 @@ const moment = require('moment')
 
 const webhandle = require('webhandle')
 const path = require('path')
-const createIdQuery = require('../create-id-query');
+const createIdQuery = require('../utils/create-id-query');
 
 let savedEmailsCollectionName = "emailmessages"
 

@@ -12,14 +12,17 @@ module.exports = function(app) {
 	// add a couple javascript based tripartite templates. More a placeholder
 	// for project specific templates than it is a useful library.
 	require('./add-templates.js')()
-	enableRestrictedAccess(/\/admin.*/, ['administrators'])
 
 	if(firstDb) {
 		if(process.env.initialAdminPassword) {
 			// Add the user auth
 			require('./setups/enable-users')(dbName, process.env.initialAdminPassword)
 		}
-		
+	}		
+
+	enableRestrictedAccess(/\/admin.*/, ['administrators'])
+
+	if(firstDb) {
 		// Custom menu
 		require('./setups/enable-menu')()
 
@@ -35,11 +38,12 @@ module.exports = function(app) {
 	}
 
 
+	// require('@dankolz/page-prerun-data-loader')()
 	// app.use(require('./routers/contact-forms'))
 	// require('./setups/enable-page-search')()
 	
 
-	require('./setups/enable-default-page-title')()
+	require('./setups/enable-default-page-title')(dbName)
 	// require('./setups/enable-social')()
 	
 
