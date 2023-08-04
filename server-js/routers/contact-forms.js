@@ -27,12 +27,7 @@ if (process.env.webhandleEmail) {
 }
 
 
-let preSecuredRouter = express.Router()
-let securedRouter = require('webhandle-users/utils/allow-group')(
-	['administrators'],
-	preSecuredRouter
-)
-webhandle.routers.primary.use(securedRouter)
+let adminRouter = require('./admin-only')
 
 /**
  * Returns a collection with specified name.
@@ -204,7 +199,7 @@ function addTemplates(tri) {
 
 
 
-preSecuredRouter.get('/admin/contact-messages', async (req, res, next) => {
+adminRouter.get('/admin/contact-messages', async (req, res, next) => {
 	let messagesCol = getCollection('emailmessages')
 	let messages = await messagesCol.find({}).toArray()
 	messages.sort((one, two) => {
@@ -214,7 +209,7 @@ preSecuredRouter.get('/admin/contact-messages', async (req, res, next) => {
 	next()
 })
 
-preSecuredRouter.get('/admin/contact-message/:id', async (req, res, next) => {
+adminRouter.get('/admin/contact-message/:id', async (req, res, next) => {
 	let messagesCol = getCollection('emailmessages')
 	let messages = await messagesCol.find(createIdQuery(req.params.id)).toArray()
 	

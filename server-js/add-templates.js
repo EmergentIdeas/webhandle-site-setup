@@ -1,6 +1,6 @@
 const moment = require('moment')
-let tripartite = require('tripartite')
 const webhandle = require('webhandle')
+const slugify = require('./utils/slugify')
 
 let templates = {}
 
@@ -27,7 +27,7 @@ let loadTemplates = function() {
 	}
 
 	templates['slugify'] = (data) => {
-		return slug(data)
+		return slugify(data)
 	}
 	templates['currentYear'] = (data) => {
 		return moment(data).format('YYYY')
@@ -59,10 +59,10 @@ let loadTemplates = function() {
 		return moment(data).format('MMMM Do YYYY, h:mm:ss a')
 	}
 
-	templates['insert-public-file-contents'] = () => {
+	templates['insertPublicFileContents'] = () => {
 	}
 
-	templates['insert-public-file-contents'].write = (thedata, stream, callback) => {
+	templates['insertPublicFileContents'].write = (thedata, stream, callback) => {
 		webhandle.sinks.project.read('public' + thedata, (err, data) => {
 			if (data) {
 				stream.write(data.toString(), "UTF-8", () => {
@@ -78,10 +78,10 @@ let loadTemplates = function() {
 		})
 	}
 
-	templates['insert-public-directory-contents'] = () => {
+	templates['insertPublicDirectoryContents'] = () => {
 	}
 
-	templates['insert-public-directory-contents'].write = (thedata, stream, callback) => {
+	templates['insertPublicDirectoryContents'].write = (thedata, stream, callback) => {
 		webhandle.sinks.project.getFullFileInfo('public' + thedata, (err, data) => {
 			if (data) {
 				let result = ''

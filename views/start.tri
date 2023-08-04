@@ -1,23 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js __pageType__ __page.editor.disablePropertyEditor??'disable-property-editor'__ __page.editor.disablePageEditor??'disable-page-editor'__">
 <head>
-
-<!--[if lt IE 9]>
-   <script type="text/javascript" >
-      document.createElement('header');
-      document.createElement('nav');
-      document.createElement('section');
-      document.createElement('article');
-      document.createElement('aside');
-      document.createElement('footer');
-   </script>
-   
-   <style type="text/css">
-		header, nav, section, article, aside, footer {
-		   display: block;
-		}
-   </style>
-<![endif]-->
 <meta charset="UTF-8">
 
 <title>__page.title__</title>
@@ -51,8 +34,4 @@
 __page::social-head-attributes__
 
 </head>
-<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><body class="modern ready-to-load-img"><!--<![endif]-->
+<body class="modern ready-to-load-img">

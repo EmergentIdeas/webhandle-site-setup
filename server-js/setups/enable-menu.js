@@ -1,5 +1,6 @@
 const webhandle = require('webhandle')
 const express = require('express');
+const secureRouter = require('../utils/secure-router')
 
 let setup = () => {
 
@@ -7,10 +8,7 @@ let setup = () => {
 	adminRouter.get('/menu', (req, res, next) => {
 		res.render('menu')
 	})
-	let securedAdminRouter = require('webhandle-users/utils/allow-group')(
-		['administrators', 'page-editors'],
-		adminRouter
-	)
+	let securedAdminRouter = secureRouter(adminRouter, {groups: ['administrators', 'page-editors']})
 	webhandle.routers.primary.use(securedAdminRouter)
 
 }

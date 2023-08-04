@@ -3,9 +3,18 @@ const AccessRequired = require('webhandle-users/errors/access-required')
 const AuthorizationRequired = require('webhandle-users/errors/authorization-required')
 const _ = require('underscore')
 
-function restrictAccessDirectory() {
-	webhandle.routers.preStatic.use(/\/admin.*/, (req, res, next) => {
-		let groups = ['administrators']
+/**
+ * Restricts the access to a url pattern to signed in users who belong to one
+ * of the listed groups.
+ * 
+ * ex: enableRestrictedAccess(/\/internal.*?/, ['administrators', 'employees'])
+ * 
+ * @param {string : regex} url 
+ * @param {Array(string)} groups 
+ */
+function enableRestrictedAccess(url, groups) {
+
+	webhandle.routers.preStatic.use(url, (req, res, next) => {
 		if (!req.user) {
 			return next(new AuthorizationRequired())
 		}
@@ -20,4 +29,4 @@ function restrictAccessDirectory() {
 
 }
 
-module.exports = restrictAccessDirectory
+module.exports = enableRestrictedAccess
