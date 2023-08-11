@@ -29,10 +29,10 @@ function createIdQuery(id) {
 	}
 	let query;
 	if(typeof id == 'string' && id.length == 24) {
-		query = getBosonId(id)
+		query = genBsonId(id)
 	}
 
-	if(!query || query.id.toString('hex') != id) {
+	if(!query || query._id.toString('hex') != id) {
 		query = {
 			_id: id
 		}
