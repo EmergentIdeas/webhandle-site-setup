@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -60,7 +60,7 @@
     "webhandle-emailer": "^1.0.10",
     "webhandle-indexer": "^1.0.2",
     "webhandle-menus-1": "^1.0.4",
-    "webhandle-page-editor": "1.0.37",
+    "webhandle-page-editor": "^1.0.39",
     "webhandle-page-server": "^1.0.11",
     "webhandle-redirector": "^1.0.0",
     "webhandle-users": "^1.0.6"
