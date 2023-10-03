@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -55,12 +55,12 @@
     "moment": "^2.24.0",
     "shiner": "^1.0.7",
     "swipe-listener": "^1.3.0",
-    "webhandle": "^1.0.27",
+    "webhandle": "^1.0.30",
     "webhandle-calendar": "^1.0.13",
     "webhandle-emailer": "^1.0.10",
     "webhandle-indexer": "^1.0.2",
     "webhandle-menus-1": "^1.0.4",
-    "webhandle-page-editor": "^1.0.28",
+    "webhandle-page-editor": "1.0.37",
     "webhandle-page-server": "^1.0.11",
     "webhandle-redirector": "^1.0.0",
     "webhandle-users": "^1.0.6"
@@ -76,7 +76,8 @@
     "mocha": "^9.1.3",
     "onchange": "^3.2.1",
     "parallelshell": "3.0.1",
-    "uglify-js": "^3.6.0"
+    "uglify-js": "^3.6.0",
+    "webpack-cli": "^5.1.4"
   },
   "browserify": {
     "transform": [
