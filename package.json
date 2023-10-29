@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -12,8 +12,8 @@
     "less-compress": "uglifycss public/css/pages.css > public/css/pages.min.css; uglifycss public/css/editor.css > public/css/editor.min.css; uglifycss public/css/app.css > public/css/app.min.css",
     "client-js-compress": "uglifyjs public/js/pages.js -o public/js/pages.min.js -c --source-map url=public/js/pages.min.js.map; uglifyjs public/js/editor.js -o public/js/editor.min.js -c --source-map url=public/js/editor.min.js.map; uglifyjs public/js/app.js -o public/js/app.min.js -c --source-map url=public/js/app.min.js.map",
     "client-js-build": "npm run client-js-pages-build ; npm run client-js-editor-build ; npm run client-js-app-build",
-    "client-js-pages-build": "npx browserify client-js/pages.js --debug | npx exorcist public/js/pages.js.map > public/js/pages.js",
-    "client-js-editor-build": "npx browserify client-js/editor.js --debug | npx exorcist public/js/editor.js.map > public/js/editor.js",
+    "client-js-pages-build": "npx browserify -p esmify client-js/pages.js --debug | npx exorcist public/js/pages.js.map > public/js/pages.js",
+    "client-js-editor-build": "npx browserify -p esmify client-js/editor.js --debug | npx exorcist public/js/editor.js.map > public/js/editor.js",
     "client-js-app-build": "npx browserify -p esmify client-js/app.js --debug | npx exorcist public/js/app.js.map > public/js/app.js",
     "client-js-app-webpack-build": "npx webpack --config app.webpack.js",
     "dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
@@ -39,6 +39,7 @@
     "@dankolz/ei-css-grid": "^1.0.0",
     "@dankolz/ei-people-groups-1": "^1.0.2",
     "@dankolz/page-prerun-data-loader": "^1.0.0",
+    "@dankolz/remote-client-logger": "^1.0.0",
     "@dankolz/social-head-attributes": "^1.0.0",
     "@dankolz/sponsors": "^1.0.1",
     "@dankolz/webhandle-jobs": "^1.0.1",

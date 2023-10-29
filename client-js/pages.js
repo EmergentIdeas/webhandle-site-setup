@@ -16,6 +16,9 @@ $(function() {
 /*
 	createShows(Shiner, SwipeListener ).forEach(shine => shine.shineOn())
 */
+/*
+	require('./enable-remote-logging')
+*/
 
 	$('header .tribar').on('click', function(evt) {
 		evt.preventDefault()
