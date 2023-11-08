@@ -4,6 +4,10 @@ var tri = require('tripartite')
 require('./pages')
 var UploadableImage = require('ei-pic-browser/uploadable-image')
 
+const setup = require('@webhandle/event-notification-panel').setup
+
+
+
 window.CKEDITOR_BASEPATH = '/ckeditor/'
 
 async function appSetup() {
@@ -47,3 +51,30 @@ else {
 	document.head.appendChild(ckscript)
 }
 
+function addPanel() {
+	// If the event panel hasn't been added to the page by somebody else yet.
+	if (!window.webhandle || !window.webhandle.eventPanel) {
+		let panel = setup({
+			notificationHolder: '#event-notifications' /* The selector of the element to which the
+													panel should be added. */
+		})
+
+		if (window.initialPageMessages) {
+			for (let msg of window.initialPageMessages) {
+				panel.addNotification({
+					model: {
+						status: 'info',
+						headline: msg
+					}
+				})
+			}
+		}
+	}
+}
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", addPanel);
+}
+else {
+	addPanel()
+}

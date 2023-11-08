@@ -1,6 +1,6 @@
 {
   "name": "webhandle-site-setup",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "description": "setup the project as a webhandle project",
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "@dankolz/sponsors": "^1.0.1",
     "@dankolz/webhandle-jobs": "^1.0.1",
     "@dankolz/webhandle-news": "^1.0.3",
+    "@webhandle/event-notification-panel": "^1.0.0",
     "dreck": "^1.0.17",
     "ei-form-styles-1": "^1.0.0",
     "ei-grid-1": "^1.0.4",

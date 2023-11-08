@@ -1,11 +1,29 @@
 __::app-start__
-<br/><br/><br/>
-<div class="container app-page">
-	<a href="/menu">Menu</a>
-	<a href="/">Site</a>
-	<a href="/logout">Logout</a>
-</div>
-<div class="container app-page">
-	__flashMessages::flash-message__
-</div>
-<div class="container app-page">
+<div class="app-frame app-page">
+	<div class="container-wrapper app-header-menu">
+		<div class="container">
+			<ul class="menu">
+				<li>
+					<a href="/menu">Menu</a>
+				</li>
+				<li>
+					<a href="/">Site</a>
+				</li>
+				<li>
+					<a href="/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="container-wrapper">
+		<div class="container">
+			<div id="event-notifications"></div>
+			<script>
+				window.initialPageMessages = __JSON.stringify(flashMessages || [])__
+			</script>
+			
+		</div>
+	</div>
+
+	<div class="container-wrapper">
+		<div class="container">
