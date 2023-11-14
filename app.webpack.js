@@ -3,7 +3,7 @@ const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 /* need to install:
 
-npm i --save-dev webpack-cli node-polyfill-webpack-plugin
+npm i --save-dev webpack-cli node-polyfill-webpack-plugin raw-loader
 
 */
  
@@ -19,6 +19,7 @@ module.exports = {
 		rules: [
 			{ test: /\.tmpl$/, use: 'tripartite/webpack-loader.mjs' }
 			, { test: /\.tri$/, use: 'tripartite/webpack-loader.mjs' }
+			, { test: /\.txt$/i, use: 'raw-loader' }
 		],
 	},
 	resolve: {

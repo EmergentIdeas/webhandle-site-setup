@@ -5,9 +5,9 @@ const editorIntegrator = require('webhandle-page-editor/webhandle-integrator')
 const secureRouter = require('../utils/secure-router')
 
 
-let setup = () => {
+let setup = async() => {
 	let pageEditingRouter = express.Router()
-	editorIntegrator(webhandle, path.join(webhandle.projectRoot, 'pages'), pageEditingRouter)
+	await editorIntegrator(webhandle, path.join(webhandle.projectRoot, 'pages'), pageEditingRouter)
 	let securedRouter = secureRouter(pageEditingRouter, {groups: ['administrators', 'page-editors']})
 	webhandle.routers.primary.use('/webhandle-page-editor', securedRouter)
 }

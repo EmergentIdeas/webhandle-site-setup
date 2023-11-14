@@ -4,7 +4,8 @@ const enableRestrictedAccess = require('./setups/enable-restricted-access')
 
 let log
 
-module.exports = function(app) {
+
+module.exports = async function(app) {
 	let firstDb = Object.keys(webhandle.dbs)[0]
 	let dbName = firstDb || "unknowndb"
 	log = filog(dbName)
@@ -27,7 +28,7 @@ module.exports = function(app) {
 		require('./setups/enable-menu')()
 
 		// Add the page editor
-		require('./setups/enable-page-editor')()
+		await require('./setups/enable-page-editor')()
 
 		// require('./setups/enable-slides')(dbName)
 		// require('./setups/enable-calendar')(dbName)
