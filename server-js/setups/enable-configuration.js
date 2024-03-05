@@ -19,6 +19,10 @@ function enableConfiguration(dbName) {
 	webhandle.routers.primary.use('/admin/config', siteConfigRouter)
 	// Fetch configuration like:
 	// let config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
+	webhandle.pageServer.preRun.push(async (req, res, next) => {
+		res.locals.config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
+		next()
+	})
 
 }
 

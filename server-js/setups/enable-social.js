@@ -6,7 +6,7 @@ function enableSocial() {
         let pageInfo = res.locals.pageInfo = res.locals.pageInfo || {}
         const url = req.originalUrl;
 
-        const fullUrl = `https://www.thesitename.com${url}`
+        const fullUrl = `https://${process.env.siteDomain || 'www.thesitename.com'}${url}`
         pageInfo.reqURL = fullUrl
         next()
     })

@@ -9,6 +9,10 @@ let loadTemplates = function() {
 		callback(templates[name])
 	})
 
+
+	templates['cdnPrefix'] = (data) => {
+		return ''
+	}
 	templates['humanDateOnly'] = (data) => {
 		return moment(data).format('MMMM Do, YYYY')
 	}

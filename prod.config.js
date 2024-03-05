@@ -12,6 +12,7 @@ module.exports = {
                 PORT: 3000,
 				trackerSecretKey: 'CHANGETHISTRACKERSECRETKEY'
 				, initialAdminPassword: 'changethisadminpassword'
+				, siteDomain: 'www.thesitename.com'
 				/*
 				, dbs: [
                    {

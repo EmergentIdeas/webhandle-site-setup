@@ -1,5 +1,5 @@
 window.require = require
-window.jQuery = window.$ = require('jquery')
+// window.jQuery = window.$ = require('jquery')
 
 
 var tri = require('tripartite')
@@ -12,7 +12,6 @@ window.Shiner = Shiner
 let createShows = require('shiner/create-shows')
 */
 
-$(function() {
 /*
 	createShows(Shiner, SwipeListener ).forEach(shine => shine.shineOn())
 */
@@ -20,15 +19,12 @@ $(function() {
 	require('./enable-remote-logging')
 */
 
-	$('header .tribar').on('click', function(evt) {
+let tribar = document.querySelector('header .tribar')
+if(tribar) {
+	tribar.addEventListener('click', function (evt) {
 		evt.preventDefault()
-		$('header nav').toggleClass('open')
-		$('body').toggleClass('locked');
+		document.querySelector('header nav').classList.toggle('open')
+		document.querySelector('body').classList.toggle('locked');
 	})
-	$('header .menu li').removeClass('current')
-	$('header .menu a').each(function() {
-		if($(this).attr('href') == window.location.pathname) {
-			$(this).closest('li').addClass('current')
-		}
-	})
-})
+}
+

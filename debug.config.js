@@ -14,6 +14,7 @@ module.exports = {
 				NODE_ENV: 'development',
 				trackerSecretKey: 'CHANGETHISTRACKERSECRETKEY'
 				, initialAdminPassword: 'changethisadminpassword'
+				, siteDomain: 'www.thesitename.com'
 				/*
 				, dbs: [
                    {
