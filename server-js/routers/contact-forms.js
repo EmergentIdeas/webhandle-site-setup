@@ -180,12 +180,13 @@ router.post('/contact', async (req, res, next) => {
 		to: destination,
 		subject: () => "Contact from the site at " + moment().format("MM/DD/YY hh:mm a"),
 		emailTemplate: 'contact-email',
-		redirectUrl: '/thank-you.html',
+		redirectUrl: '/thank-you',
 		from: 'website@example.org',
 		spamCheck: spamcheck,
 		addTemplates: addTemplates,
 		noVrf: true,
-		preRenderProcessor: createSaveMessage('contact', 'contact-email')
+		preRenderProcessor: createSaveMessage('contact', 'contact-email'),
+		grecaptchaPrivate: process.env.grecaptchaPrivate
 		// , vrf: '12'
 	})
 	handler(req, res, next)

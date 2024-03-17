@@ -34,5 +34,7 @@
 __page::social-head-attributes__
 <script type="text/javascript" src="__this.isPageEditor ? (this.vrsc || '') + '/js/editor.js' : (this.vrsc || '') + '/js/pages.js'__" defer></script>
 
+__recaptchaId::recaptcha-head__
+
 </head>
 <body class="modern ready-to-load-img">

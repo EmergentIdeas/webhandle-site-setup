@@ -6,7 +6,7 @@ module.exports = {
      * http://pm2.keymetrics.io/docs/usage/application-declaration/
      */
     apps: [{
-            name: appName + '-web',
+            name: appName + '-web-live',
             script: './web-server.js',
             "env": {
                 PORT: 3000,

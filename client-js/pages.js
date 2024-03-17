@@ -1,9 +1,14 @@
 window.require = require
 // window.jQuery = window.$ = require('jquery')
+// const recaptchaSetup = require('webhandle-emailer/client-js/make-form-recaptcha')
 
 
 var tri = require('tripartite')
 var tripartite = tri
+
+if (window.recaptchaId && document.querySelectorAll('form.google-recaptcha-form').length > 0) {
+	recaptchaSetup(window.recaptchaId)
+}
 
 /*
 const SwipeListener = require('swipe-listener')

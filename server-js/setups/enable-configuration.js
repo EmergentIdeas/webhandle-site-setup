@@ -21,6 +21,9 @@ function enableConfiguration(dbName) {
 	// let config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
 	webhandle.pageServer.preRun.push(async (req, res, next) => {
 		res.locals.config = (await webhandle.dbs[dbName].collections.configuration.find({configurationId: 'siteconfig'}).toArray())[0]
+		if(process.env.grecaptchaPublic) {
+			res.locals.recaptchaId = process.env.grecaptchaPublic
+		}
 		next()
 	})
 
