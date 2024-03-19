@@ -18,7 +18,7 @@ function noPunctuation(val) {
     return ''
 }
 
-let configFiles = ['dev.config.js', 'debug.config.js', 'prod.config.js']
+let configFiles = ['dev.config.js', 'prod.config.js']
 
 function changeConfigFile(searchString, replacementString, file) {
 	spawnSync('sed', ['-i', `s/${searchString}/${replacementString}/g`, file])
@@ -50,7 +50,6 @@ mkdir.on('close', function(code) {
 	spawnSync('cp', ['-rn', path.resolve(packageDir, '.vscode'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'app.webpack.js'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])
-	spawnSync('cp', ['-rn', path.resolve(packageDir, 'debug.config.js'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'prod.config.js'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'web-server.js'), path.resolve(cwd)])
 	

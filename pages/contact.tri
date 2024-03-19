@@ -13,7 +13,7 @@ __::start__
 	<div class="container-wrapper">
 		<main class="container edit-content-inline">
 			<h1>Contact Us</h1>
-			<form method="post" action="/contact">
+			<form method="post" action="/contact" class="ei-form google-recaptcha-form">
 				<label>
 					Name:
 					<input type="text" name="name" />
