@@ -23,12 +23,12 @@ async function appSetup() {
 	// custom config
     CKEDITOR.config.customConfig = '/webhandle-page-editor/std-config.js' 
 
+	require('webhandle-page-editor/app-client')
+
 	$('.app-page input[type=text].picture-input-field').each(function() {
 			new UploadableImage(this)
 	})
 
-
-	require('webhandle-page-editor/app-client')
 	/*
 	require('@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
 	require('@dankolz/sponsors/client-js/sponsors.js')
