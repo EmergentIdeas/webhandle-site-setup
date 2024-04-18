@@ -9,11 +9,11 @@ npm i --save-dev webpack-cli node-polyfill-webpack-plugin raw-loader
  
 
 module.exports = {
-	entry: './client-js/app.js',
+	entry: './client-js/editor.js',
 	// mode: 'development',
 	mode: 'production',
 	output: {
-		filename: 'app.js',
+		filename: 'editor.js',
 		path: path.resolve(__dirname, 'public/js'),
 	},
 	module: {

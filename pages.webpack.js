@@ -8,12 +8,12 @@ npm i --save-dev webpack-cli node-polyfill-webpack-plugin raw-loader
 */
  
 
-module.exports = {
-	entry: './client-js/app.js',
+module.exports = [{
+	entry: './client-js/pages.js',
 	// mode: 'development',
 	mode: 'production',
 	output: {
-		filename: 'app.js',
+		filename: 'pages.js',
 		path: path.resolve(__dirname, 'public/js'),
 	},
 	module: {
@@ -25,10 +25,13 @@ module.exports = {
 	},
 	resolve: {
 		fallback: {
-			stream: require.resolve('stream-browserify'),
+			// stream: require.resolve('stream-browserify'),
 		}
 	},
 	plugins: [
-        new NodePolyfillPlugin()
+        // new NodePolyfillPlugin()
     ]
-};
+}
+
+
+]
