@@ -48,6 +48,8 @@ mkdir.on('close', function(code) {
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'data'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'page-templates'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, '.vscode'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'pages.webpack.js'), path.resolve(cwd)])
+	spawnSync('cp', ['-rn', path.resolve(packageDir, 'editor.webpack.js'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'app.webpack.js'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'dev.config.js'), path.resolve(cwd)])
 	spawnSync('cp', ['-rn', path.resolve(packageDir, 'prod.config.js'), path.resolve(cwd)])
