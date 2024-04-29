@@ -1,6 +1,6 @@
 {
 	"name": "webhandle-site-setup",
-	"version": "1.0.52",
+	"version": "1.0.53",
 	"description": "setup the project as a webhandle project",
 	"repository": {
 		"type": "git",
@@ -10,12 +10,9 @@
 	"scripts": {
 		"less-build": "npx lessc --source-map --source-map-include-source less/pages.less public/css/pages.css | npx lessc --source-map --source-map-include-source less/editor.less public/css/editor.css; npx lessc --source-map --source-map-include-source less/app.less public/css/app.css",
 		"less-compress": "uglifycss public/css/pages.css > public/css/pages.min.css; uglifycss public/css/editor.css > public/css/editor.min.css; uglifycss public/css/app.css > public/css/app.min.css",
-		"client-js-build": "npm run client-js-pages-webpack-build ; npm run client-js-editor-webpack-build ; npm run client-js-app-webpack-build",
-		"client-js-pages-webpack-build": "npx webpack --config pages.webpack.js",
-		"client-js-app-webpack-build": "npx webpack --config app.webpack.js",
-		"client-js-editor-webpack-build": "npx webpack --config editor.webpack.js",
+		"client-js-build": "npx webpack --config js.webpack.js",
+		"dev-client-js-watch": "npx webpack --watch --config js.webpack.js",
 		"dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
-		"dev-client-js-watch": "onchange 'client-js/**/*.js' -- npm run client-js-build",
 		"dev-server-js-watch": "onchange 'server-js/**/*.js' -- pm2 restart $npm_package_name-web",
 		"bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch'",
 		"pm2-bg": "parallelshell 'npm run dev-less-watch' 'npm run dev-client-js-watch' 'npm run dev-server-js-watch'",
@@ -42,6 +39,7 @@
 		"@dankolz/sponsors": "^1.0.1",
 		"@dankolz/webhandle-jobs": "^1.0.1",
 		"@dankolz/webhandle-news": "^1.0.3",
+		"@dankolz/webp-detection": "^1.0.9",
 		"@webhandle/event-notification-panel": "^1.0.0",
 		"dreck": "^1.0.20",
 		"ei-form-styles-1": "^1.0.0",
@@ -67,7 +65,6 @@
 		"webhandle-users": "^1.0.7"
 	},
 	"devDependencies": {
-		"@dankolz/webp-detection": "^1.0.9",
 		"chai": "^4.3.4",
 		"jsdoc": "^3.6.11",
 		"less": "^3.13.1",

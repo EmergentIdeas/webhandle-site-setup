@@ -1,6 +1,9 @@
 const moment = require('moment')
 const webhandle = require('webhandle')
 const slugify = require('./utils/slugify')
+const parseWebp2xUrl = require('@dankolz/webp-detection/lib/parse-webp2x-url')
+const generatePictureMarkup = require('@dankolz/webp-detection/lib/generate-picture-markup')
+
 
 let templates = {}
 
@@ -9,6 +12,11 @@ let loadTemplates = function() {
 		callback(templates[name])
 	})
 
+	templates['makePicture'] = (data) => {
+		let o = parseWebp2xUrl(data)
+		let html = generatePictureMarkup(o.url, o.params)
+		return html
+	}
 
 	templates['cdnPrefix'] = (data) => {
 		return ''
