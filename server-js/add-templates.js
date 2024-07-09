@@ -13,6 +13,9 @@ let loadTemplates = function() {
 	})
 
 	templates['makePicture'] = (data) => {
+		if(data && typeof data === 'string') {
+			data = data.split('&amp;').join('&')
+		}
 		let o = parseWebp2xUrl(data)
 		let html = generatePictureMarkup(o.url, o.params)
 		return html
