@@ -1,12 +1,12 @@
 __::app_pre__
 	<section class="page">
 		<h1>Special Operations</h1>
-		<form method="post" action="/admin/delete-all-products" enctype="multipart/form-data">
-			<button type="submit">Delete All Products</button>
-		</form>
 		<br/>
-		<p>
-			<a href="/admin/tax-statement">Tax Statements</a>
-		</p>
+		<form method="post" action="/webhandle-page-editor/admin/update-resource-version" >
+			<p>
+				Current resource version: __webhandle.resourceVersion__
+			</p>
+			<button type="submit">Update Resource Version</button>
+		</form>
 	</section>
 __::app_post__

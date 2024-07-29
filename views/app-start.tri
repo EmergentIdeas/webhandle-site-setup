@@ -33,6 +33,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 
+<script type="text/javascript" src="__(this.vrsc || '') + '/js/app.js'__" defer></script>
 
 </head>
 <body class="modern ready-to-load-img">
