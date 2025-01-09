@@ -25,6 +25,9 @@ async function appSetup() {
 
 	require('webhandle-page-editor/app-client')
 
+	let upcastFileInPicture = require('@webhandle/file-in-input').default
+	upcastFileInPicture()
+
 	$('.app-page input[type=text].picture-input-field').each(function() {
 			new UploadableImage(this)
 	})

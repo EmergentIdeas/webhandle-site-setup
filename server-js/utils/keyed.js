@@ -7,7 +7,13 @@
  */
 function keyed(list, keyProperty) {
 	let result = [...list].reduce((acc, opt) => {
-		acc[opt[keyProperty]] = opt
+		if(typeof keyProperty === 'string') {
+			acc[opt[keyProperty]] = opt
+		}
+		else if(typeof keyProperty === 'function') {
+			let key = keyProperty(opt)
+			acc[key] = opt
+		}
 		return acc
 	}, {})
 

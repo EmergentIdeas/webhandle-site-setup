@@ -1,6 +1,6 @@
 {
 	"name": "webhandle-site-setup",
-	"version": "1.0.55",
+	"version": "1.0.56",
 	"description": "setup the project as a webhandle project",
 	"repository": {
 		"type": "git",
@@ -40,7 +40,9 @@
 		"@dankolz/webhandle-jobs": "^1.0.1",
 		"@dankolz/webhandle-news": "^1.0.3",
 		"@dankolz/webp-detection": "^1.0.9",
+		"@webhandle/emailed-password-reset": "^1.0.2",
 		"@webhandle/event-notification-panel": "^1.0.0",
+		"@webhandle/file-in-input": "^1.0.0",
 		"dreck": "^1.0.20",
 		"ei-form-styles-1": "^1.0.0",
 		"ei-grid-1": "^1.0.4",
@@ -59,10 +61,10 @@
 		"webhandle-emailer": "^1.0.15",
 		"webhandle-indexer": "^1.0.2",
 		"webhandle-menus-1": "^1.0.4",
-		"webhandle-page-editor": "^1.0.44",
+		"webhandle-page-editor": "^1.0.52",
 		"webhandle-page-server": "^1.0.12",
 		"webhandle-redirector": "^1.0.0",
-		"webhandle-users": "^1.0.7"
+		"webhandle-users": "^1.0.9"
 	},
 	"devDependencies": {
 		"chai": "^4.3.4",

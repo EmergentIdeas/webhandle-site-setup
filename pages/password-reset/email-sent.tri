@@ -1,0 +1,15 @@
+__::end-user-start__
+<div class="page page-login">
+	<div class="container-wrapper">
+		<main class="container">
+			<h1>Email Sent</h1>
+			<p>
+				An email has been sent to you which contains a link to reset your password.
+				If you don't see it, make sure to check your Junk Mail folder because sometimes
+				automated emails (like this one) will end up there.
+			</p>
+		</main>
+	</div>
+	__::footer__
+</div>
+__::end__

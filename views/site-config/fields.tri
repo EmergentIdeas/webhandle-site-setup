@@ -1,4 +1,10 @@
 
+<h3>Site Parameters</h3>
+<label>
+	Canonical site url (like https://my.site.com):
+	<input type="text" name="canonicalSiteUrl"  />
+</label>
+
 <h3>Header / Footer Info</h3>
 <label>
 	Physical address:

@@ -15,6 +15,16 @@ let setup = (dbName, defaultAdminPassword) => {
 		}
 	})	
 	auth.createUserIfNoneExists('administrator', defaultAdminPassword, ['administrators'])
+
+	// import('@webhandle/emailed-password-reset').then(({default: userInteractions}) => {
+	// 	webhandle.routers.primary.use('/password-reset', userInteractions({
+	// 		siteUrl: 'http://localhost:3000'
+	// 		, templateName: 'reset-email'
+	// 		, from: 'website@localhost'
+	// 		, grecaptchaPrivate: process.env.grecaptchaPrivate
+	// 		, requiredGrecaptchaScore: .4
+	// 	}))
+	// })
 }
 
 module.exports = setup
