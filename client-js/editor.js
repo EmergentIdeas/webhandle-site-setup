@@ -11,6 +11,14 @@ editing({
 	fileFunctionsPrefix: '/webhandle-page-editor'
 })
 
-
+// Prevents a link which is being editing acting as a link
+for(let a of document.querySelectorAll('a')) {
+	a.addEventListener('click', (evt) => {
+		if(a.querySelector('.cke_editable')) {
+			evt.stopPropagation()
+			evt.preventDefault()
+		}
+	})
+}
 
 

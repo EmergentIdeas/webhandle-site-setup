@@ -35,6 +35,10 @@ __page::social-head-attributes__
 <script type="text/javascript" src="__this.isPageEditor ? (this.vrsc || '') + '/js/editor.js' : (this.vrsc || '') + '/js/pages.js'__" defer></script>
 
 __recaptchaId::recaptcha-head__
+__page.pageVisibility === 'draft' || page.pageVisiblity === 'private'??'<meta name="robots" content="noindex" />'__
+__event && event.eventVisibility === 'draft'??'<meta name="robots" content="noindex" />'__
+
+
 
 </head>
 <body class="modern ready-to-load-img">

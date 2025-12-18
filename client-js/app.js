@@ -33,7 +33,7 @@ async function appSetup() {
 	})
 
 	/*
-	require('@dankolz/ei-people-groups-1/client-js/people-groups-client.js')
+	require('@dankolz/ei-people-groups-1/client-js/people-groups-client.mjs')
 	require('@dankolz/sponsors/client-js/sponsors.js')
 	require('webhandle-calendar/client-js/calendar-app-client.js')
 	require('@dankolz/webhandle-jobs/client-js/jobs-client.js')
